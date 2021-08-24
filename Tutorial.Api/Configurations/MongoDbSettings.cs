@@ -10,7 +10,7 @@ namespace Tutorial.Api.Settings
         public string ConnectionString {
             get
             {
-                return $"mongodb://{User}:{Password}@{Host}:{Port}";
+                return $"mongodb+srv://{User}:{Password}@{Host}";
             }
         }
     }

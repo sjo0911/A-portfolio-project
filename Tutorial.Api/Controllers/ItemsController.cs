@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DnsClient.Internal;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Tutorial.Api.Dtos;
@@ -44,7 +45,7 @@ namespace Tutorial.Api.Controllers
              
         }
         [HttpPost]
-        public async Task<ActionResult<ItemDto>> CreateItem(CreateItemDto itemDto)
+        public async Task<ActionResult<ItemDto>> CreateItemAsync(CreateItemDto itemDto)
         {
            Item item = new(){
                Id = Guid.NewGuid(),
