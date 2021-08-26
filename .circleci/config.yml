@@ -10,6 +10,9 @@ jobs:
     # Be sure to update the tag on this image to a more stable version, using latest can result in unstable builds.
     docker:
       - image: microsoft/dotnet:latest
+        auth:
+          username: sjo0911  # can specify string literal values
+          password: $DOCKERHUB_PASSWORD  # or project environment variable reference
     steps:
       # Checkout the code as the first step.
       - checkout
