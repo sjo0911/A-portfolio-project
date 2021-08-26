@@ -59,12 +59,40 @@ namespace LoginApi.Controllers
             return CreatedAtAction("GetAsync", new { id = newUser.Id}, newUser );
         }
 
-        [HttpPut("{id:length(24)}")]
+        [HttpPut("{id:length(36)}")]
         public async Task<IActionResult> UpdateAsync(string id, User userIn)
         {
             var user = await _userService.GetAsync(id);
-            if(user == null)
+            if(user == null){
+                Console.WriteLine("hej");
                 return NotFound();
+            }
+                
+            
+            await _userService.UpdateAsync(id, userIn);
+            return NoContent();
+        }
+
+        [HttpPut("changepass/{id:length(36)}")]
+        public async Task<IActionResult> ChangePass(string id, User userIn)
+        {
+            var user = await _userService.GetAsync(id);
+            if(user == null){
+                 Console.WriteLine("hejsan");
+                return NotFound();
+            }
+                
+            if(!BCrypt.Net.BCrypt.Verify(userIn.oldPassword, user.Password))
+            {
+                return BadRequest(new AuthResult{
+                        Errors = new List<string>(){
+                            "Invalid change password request"
+                        },
+                        Success = false
+                    });
+            }
+            userIn.Password = hashPassword(userIn.Password);
+            userIn.oldPassword = null;
             
             await _userService.UpdateAsync(id, userIn);
             return NoContent();

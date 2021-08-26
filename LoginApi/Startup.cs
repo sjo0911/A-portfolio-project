@@ -42,6 +42,17 @@ namespace LoginApi
                 Configuration.GetSection(nameof(UserDbSettings)));
             services.AddSingleton<IUserDbSettings>(sp => sp.GetRequiredService<IOptions<UserDbSettings>>().Value);
             services.AddSingleton<UserService>();
+            services.AddCors(options =>
+            {
+                    // this defines a CORS policy called "default"
+                    options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });  
             services.AddMvc(options =>
             {
                 options.SuppressAsyncSuffixInActionNames = false;
@@ -64,6 +75,7 @@ namespace LoginApi
                         RequireExpirationTime = false
                     };
                 });
+      
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -77,6 +89,8 @@ namespace LoginApi
             }
 
             app.UseRouting();
+
+            app.UseCors("default");
 
             app.UseAuthorization();
 

@@ -1,0 +1,57 @@
+<ng-container *ngIf="(user$ | async) as user;">
+  <div class="wrapper">
+    <h4 class="login-header">Welcome {{user.firstName}} {{user.lastName}}</h4>
+    <br>
+
+    <div class="changePassword">
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Change Password
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="login-body">
+          <form [formGroup]="passwordForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="New Password">New Password</label>
+                <input type="password" formControlName="newPass" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.newPass.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Confirm Password">Confirm Password</label>
+                <input type="password" formControlName="confirmPass" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.newPass.errors }" />
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Password is required</div>
+                </div>
+                <div class="invalid-feedback" *ngIf="!matchingPass">Password dont match</div>
+              </div>
+              <div class="form-group">
+                  <button [disabled]="loading" mat-button color="accent">
+                      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                      Change password
+                  </button>
+              </div>
+          </form>
+      </div>
+      </mat-expansion-panel>
+    </div>
+    <br>
+    <div class="userInfo">
+      <p>Total number of logins: {{user.loginDates.length}}</p>
+      <p>Last login {{user.loginDates[user.loginDates.length -1]}}</p>
+    </div>
+    <br>
+    <button mat-button color="accent" (click)= "logout()">Logout</button>
+  </div>
+
+
+</ng-container>

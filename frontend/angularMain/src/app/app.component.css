@@ -1,0 +1,24 @@
+@import "../styles.css";
+
+
+#homeButton {
+  margin-top: 1px;
+  margin-right: 2px;
+  position:absolute;
+  top: 5px;
+  left:5px;
+  z-index: 99999;
+}
+
+#loginButton {
+  margin-top: 1px;
+  margin-right: 2px;
+  position:absolute;
+  top: 5px;
+  right:5px;
+  z-index: 99999;
+}
+
+.sidenav-container {
+  height: 100%;
+}

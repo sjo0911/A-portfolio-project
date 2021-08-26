@@ -1,0 +1,31 @@
+
+
+
+  <div class="wrapper">
+    <h4 class="login-header">Login</h4>
+    <div class="login-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+            <div class="form-group">
+                <label for="username">Email</label>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && loginF.email.errors }" />
+                <div *ngIf="loginSubmitted && loginF.email.errors" class="invalid-feedback">
+                    <div *ngIf="loginF.email.errors">Email is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && loginF.password.errors }" />
+                <div *ngIf="loginSubmitted && loginF.password.errors" class="invalid-feedback">
+                    <div *ngIf="loginF.password.errors.required">Password is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loginLoading" mat-button color="accent">
+                    <span *ngIf="loginLoading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button>
+            </div>
+        </form>
+    </div>
+  </div>
+

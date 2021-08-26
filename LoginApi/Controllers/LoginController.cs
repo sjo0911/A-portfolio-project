@@ -60,6 +60,12 @@ namespace LoginApi.Controllers
                 existingUser.loginDates.Add(DateTime.UtcNow.ToString());
                 await _userService.UpdateAsync(existingUser.Id, existingUser);
                 return Ok(new AuthResult(){
+                    Id = existingUser.Id,
+                    UserName = existingUser.UserName,
+                    Email = existingUser.Email,
+                    FirstName = existingUser.FirstName,
+                    LastName = existingUser.LastName,
+                    loginDates = existingUser.loginDates,
                     Success = true,
                     Token = jwtToken
                 });

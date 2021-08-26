@@ -1,0 +1,23 @@
+<button mat-mini-fab color="primary" id=homeButton aria-label="Opens Sidenavigation menu" (click)="sideNav.toggle()">
+  <mat-icon>menu</mat-icon>
+</button>
+<ng-template #loginButton>
+  <button mat-mini-fab id=loginButton color="primary" (click)="loginNav.toggle()">Login</button>
+</ng-template>
+<ng-container *ngIf="(user$ | async) as user else loginButton">
+  <button mat-mini-fab id=loginButton color="primary" (click)="loginNav.toggle()">User</button>
+</ng-container>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sideNav mode="over"><app-side-nav></app-side-nav></mat-sidenav>
+  <mat-sidenav-content><router-outlet></router-outlet></mat-sidenav-content>
+
+    <mat-sidenav #loginNav mode="over" position="end">
+      <ng-container *ngIf="(user$ | async) as user; else login"><app-user-page></app-user-page></ng-container>
+      <ng-template #login><app-login-page></app-login-page>
+
+      </ng-template>
+
+    </mat-sidenav>
+
+</mat-sidenav-container>

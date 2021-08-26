@@ -73,6 +73,30 @@
             "FileCacheOption": {"TtlSeconds": 15}
         },
         {
+            "DownstreamPathTemplate": "/users/changepass/{id}",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+            {
+                "Host": "localhost",
+                "Port": 5010
+            }
+            ],
+            "UpstreamPathTemplate": "/api/users/changepass/{id}",
+            "UpstreamHttpMethod": [  "PUT"],
+            "AutenticationOptions": {
+                "AuthenticationProviderKey": "Bearer",
+                "AllowedScopes": []
+            },
+            "RateLimitOptions": {
+                "ClientWhitelist": [],
+                "EnableRateLimiting" : true,
+                "Period": "5s",
+                "PeriodTimespan": 1,
+                "Limit": 1
+            },
+            "FileCacheOption": {"TtlSeconds": 15}
+        },
+        {
             "DownstreamPathTemplate": "/users",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
