@@ -11,13 +11,13 @@ jobs:
             - checkout
             - run:
                 name: install angular
-                command: cd webservers/mainserver && npm install @angular/cli
+                command: cd frontend/angularMain && npm install @angular/cli
             - run:
                 name: install webserver dependencies
-                command: cd webservers/mainserver && npm install
+                command: cd frontend/angularMain && npm install
             - run:
                 name: compile angular project
-                command: cd webservers/mainserver && npm run build
+                command: cd frontend/angularMain && npm run build
 
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
   build-and-test:  
