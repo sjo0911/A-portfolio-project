@@ -28,6 +28,9 @@ jobs:
                 name: compile angular project
                 command: cd frontend/angularMain && npm run build
             - run:
+                name: install heroku
+                command: sudo curl https://cli-assets.heroku.com/install.sh | sh
+            - run:
                 name: login to heroku
                 command: HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
             - run:
