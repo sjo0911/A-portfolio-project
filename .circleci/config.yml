@@ -5,8 +5,7 @@ version: 2.1
 
 jobs:
   build-and-test-angular-main:
-        docker:
-          - image: circleci/node:15-browsers
+        machine: true
         steps:
             - checkout
             - run:
