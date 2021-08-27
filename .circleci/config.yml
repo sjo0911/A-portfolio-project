@@ -18,6 +18,7 @@ jobs:
             - run:
                 name: compile angular project
                 command: cd frontend/angularMain && npm run build
+
             - run:
                 name: install heroku
                 command: sudo curl https://cli-assets.heroku.com/install.sh | sh

@@ -1,0 +1,14 @@
+{
+  "name": "mainserver",
+  "version": "1.0.0",
+  "description": "Web server",
+  "main": "server.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Simon Jonasson",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
