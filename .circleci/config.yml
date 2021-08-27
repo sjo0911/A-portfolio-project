@@ -9,6 +9,9 @@ jobs:
         steps:
             - checkout
             - run:
+                name: install npm
+                command: npm install npm
+            - run:
                 name: install angular
                 command: cd frontend/angularMain && npm install @angular/cli
             - run:
