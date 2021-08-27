@@ -10,9 +10,8 @@ orbs:
   heroku: circleci/heroku@1.2.6
 
 jobs:
-  build-and-test-angular-main:
-        docker:
-        - image: circleci/node:15-browsers
+  build-and-test-angular-main :
+        machine: true
         steps:
             - checkout
             - run:
