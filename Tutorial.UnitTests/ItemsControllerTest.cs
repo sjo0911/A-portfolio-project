@@ -91,7 +91,7 @@ namespace Tutorial.UnitTests
         //Then
         var createdItem = (result.Result as CreatedAtActionResult).Value as ItemDto;
         createdItem.Should().BeEquivalentTo(
-            itemsToCreate,
+            itemToCreate,
             OperationalStatus => OperationalStatus.ComparingByMembers<ItemDto>().ExcludingMissingMembers()
         );
         createdItem.Id.Should().NotBeEmpty();

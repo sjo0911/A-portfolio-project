@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ROOT_URL: "localhost:5020"
+  ROOT_URL: "http://localhost:5020"
 };
