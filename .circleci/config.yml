@@ -11,7 +11,7 @@ jobs:
             - checkout
             - run:
                 name: install angular
-                command: cd webservers && cd mainserver && install @angular/cli
+                command: cd webservers/mainserver && npm install @angular/cli
             - run:
                 name: install webserver dependencies
                 command: cd webservers/mainserver && npm install
