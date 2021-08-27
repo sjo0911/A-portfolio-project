@@ -18,6 +18,9 @@ jobs:
                 name: install npm
                 command: npm install npm
             - run:
+                name: install node
+                command: sudo apt install nodejs
+            - run:
                 name: install angular
                 command: cd frontend/angularMain && npm install @angular/cli
             - run:
