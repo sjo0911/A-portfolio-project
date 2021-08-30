@@ -18,14 +18,14 @@ jobs:
                 command: cd frontend/angularMain && npm install
             - run:
                 name: compile angular project
-                command: cd frontend/angularMain && npm run build
+                command: cd frontend/angularMain && npm run build && cd .. && cd ..
             - run:
                 name: deploy
                 command: | 
                   sudo curl https://cli-assets.heroku.com/install.sh | sh
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911 web
-                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911 web
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911 --recursive
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911 --recursive
 
 
 
