@@ -6,12 +6,13 @@ orbs:
   # The Node.js orb contains a set of prepackaged CircleCI configuration you can utilize
   # Orbs reduce the amount of configuration required for common tasks. 
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
-  node: twuni/nodejs@15.11.0
+  node: circleci/node:15
   heroku: circleci/heroku@1.2.6
 
 jobs:
   build-and-test-angular-main :
-        machine: true
+        docker:
+        - image: circleci/node:15-browsers
         steps:
             - checkout
             - run: 
