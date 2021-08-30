@@ -2,7 +2,7 @@ FROM node:15
 ENV NODE_ENV=production
 
 # Create app directory
-WORKDIR /
+WORKDIR /webservers/mainserver
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
