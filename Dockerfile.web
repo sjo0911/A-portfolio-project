@@ -2,12 +2,12 @@ FROM node:15
 ENV NODE_ENV=production
 
 # Create app directory
-WORKDIR /webservers/mainserver
+WORKDIR /
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-COPY ["package.json", "package-lock.json*", "./"]
+COPY ["webservers/mainserver/package.json", "webservers/mainserver/package-lock.json*", "./"]
 
 RUN npm install
 # If you are building your code for production
