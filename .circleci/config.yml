@@ -6,7 +6,7 @@ orbs:
   # The Node.js orb contains a set of prepackaged CircleCI configuration you can utilize
   # Orbs reduce the amount of configuration required for common tasks. 
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
-  node: circleci/node@4.1
+  node: circleci/node@4.7.0
   heroku: circleci/heroku@1.2.6
 
 jobs:
@@ -15,14 +15,14 @@ jobs:
         steps:
             - checkout
             - run:
+                name: install node
+                command: sudo n latest
+            - run:
                 name: install npm
-                command: curl -qL https://www.npmjs.com/install.sh | sh
+                command: install-npm
             - run:
                 name: update sudo
                 command: sudo apt update
-            - run:
-                name: install node
-                command: sudo n latest
             - run:
                 name: install angular
                 command: npm install angular-cli@latest -g
