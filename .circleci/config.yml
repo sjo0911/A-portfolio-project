@@ -15,15 +15,6 @@ jobs:
         steps:
             - checkout
             - run:
-                name: install node
-                command: sudo n latest
-            - run:
-                name: install npm
-                command: install-npm
-            - run:
-                name: update sudo
-                command: sudo apt update
-            - run:
                 name: install angular
                 command: npm install angular-cli@latest -g
             - run:
