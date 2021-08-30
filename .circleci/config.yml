@@ -13,9 +13,7 @@ jobs:
         machine: true
         steps:
             - checkout
-            - node/install:
-                install-yarn: true
-                install-npm: true
+            - node/install
             - run: node --version
             - run: 
                 name: install angular
