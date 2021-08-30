@@ -11,12 +11,12 @@ orbs:
 jobs:
   build-and-test-angular-main :
         docker:
-        - image: circleci/node:15-browsers
+        - image: circleci/16.8.0
         steps:
             - checkout
             - run: 
                 name: install angular
-                command: npm install angular-cli@latest -g
+                command: cd frontend/angularMain && npm install angular-cli@latest
             - run:
                 name: install frontend dependencies
                 command: cd frontend/angularMain && npm install
