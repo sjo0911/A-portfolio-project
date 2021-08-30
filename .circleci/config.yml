@@ -25,7 +25,7 @@ jobs:
                 command: sudo apt install nodejs
             - run:
                 name: install angular
-                command: cd frontend/angularMain && npm install @angular/cli
+                command: npm install angular-cli@latest -g
             - run:
                 name: install webserver dependencies
                 command: cd frontend/angularMain && npm install
