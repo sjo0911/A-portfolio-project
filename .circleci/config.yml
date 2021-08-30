@@ -18,7 +18,7 @@ jobs:
                 command: cd frontend/angularMain && npm install
             - run:
                 name: compile angular project
-                command: cd frontend/angularMain && npm run build
+                command: cd frontend/angularMain && npm run build && cd ...
             - run:
                 name: deploy
                 command: | 
