@@ -9,9 +9,8 @@ orbs:
   heroku: circleci/heroku@1.2.6
 
 jobs:
-  build-and-test-angular-main :
-        docker:
-        - image: circleci/node:current
+  build-and-test-angular-main:
+        machine: true
         steps:
             - checkout
             - run: 
