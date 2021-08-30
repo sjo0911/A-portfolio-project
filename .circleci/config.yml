@@ -11,7 +11,7 @@ orbs:
 jobs:
   build-and-test-angular-main :
         docker:
-        - image: 16.8.0-browsers
+        - image: circleci/node:current
         steps:
             - checkout
             - run: 
