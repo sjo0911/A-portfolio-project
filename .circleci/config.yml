@@ -22,7 +22,7 @@ jobs:
                 command: sudo apt update
             - run:
                 name: install node
-                command: sudo apt install nodejs
+                command: sudo n latest
             - run:
                 name: install angular
                 command: npm install angular-cli@latest -g
