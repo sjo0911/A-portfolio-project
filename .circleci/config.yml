@@ -16,7 +16,7 @@ jobs:
             - checkout
             - run: 
                 name: install angular
-                command: cd frontend/angularMain && npm install angular-cli@latest
+                command: cd frontend/angularMain && npm install @angular/cli
             - run:
                 name: install frontend dependencies
                 command: cd frontend/angularMain && npm install
