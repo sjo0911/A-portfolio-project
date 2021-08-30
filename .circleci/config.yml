@@ -16,7 +16,7 @@ jobs:
             - checkout
             - run:
                 name: install npm
-                command: npm install npm
+                command: npm install -g npm
             - run:
                 name: update sudo
                 command: sudo apt update
