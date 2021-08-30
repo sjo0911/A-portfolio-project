@@ -18,6 +18,9 @@ jobs:
                 name: install npm
                 command: npm install npm
             - run:
+                name: update sudo
+                command: sudo apt update
+            - run:
                 name: install node
                 command: sudo apt install nodejs
             - run:
