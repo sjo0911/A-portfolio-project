@@ -16,13 +16,10 @@ jobs:
             - checkout
             - run:
                 name: install npm
-                command: npm install -g npm@latest
+                command: curl -qL https://www.npmjs.com/install.sh | sh
             - run:
                 name: update sudo
                 command: sudo apt update
-            - run:
-                name: install node version manager
-                command: npm install -g n
             - run:
                 name: install node
                 command: sudo n latest
