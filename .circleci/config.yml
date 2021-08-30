@@ -13,6 +13,10 @@ jobs:
         machine: true
         steps:
             - checkout
+            - node/install:
+                install-yarn: true
+                install-npm: true
+            - run: node --version
             - run: 
                 name: install angular
                 command: cd frontend/angularMain && npm install @angular/cli
