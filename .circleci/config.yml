@@ -23,6 +23,7 @@ jobs:
                 name: deploy
                 command: | 
                   sudo curl https://cli-assets.heroku.com/install.sh | sh
+                  ls
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911 --recursive
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911 --recursive
