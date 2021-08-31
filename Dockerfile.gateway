@@ -9,9 +9,9 @@ ENV ASPNETCORE_URLS=http://+:5020
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
 WORKDIR /src
-COPY ["gateway/Gateway.csproj", "./"]
+COPY ["Gateway/Gateway.csproj", "./"]
 RUN dotnet restore "Gateway.csproj"
-COPY /gateway .
+COPY /Gateway .
 WORKDIR "/src/."
 RUN dotnet build "Gateway.csproj" -c Release -o /app/build
 
