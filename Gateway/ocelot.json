@@ -53,7 +53,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "login://login",
+                "Host": "http://sjo0911.herokuapp.com",
                 "Port": 5010
             }
             ],
@@ -77,7 +77,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "login://login",
+                "Host": "http://sjo0911.herokuapp.com",
                 "Port": 5010
             }
             ],
@@ -101,7 +101,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "login://login",
+                    "Host": "http://sjo0911.herokuapp.com",
                     "Port": 5010
                 }
             ],
@@ -125,7 +125,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "localhost",
+                "Host": "http://sjo0911.herokuapp.com",
                 "Port": 5010
             }
             ],
