@@ -44,10 +44,10 @@ namespace LoginApi
             services.AddSingleton<UserService>();
             services.AddCors(options =>
             {
-                    // this defines a CORS policy called "default"
+                    // AllowAnyOrigin will cause security issues
                     options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("http://sjo0911.herokuapp.com")
+                    policy.AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();
