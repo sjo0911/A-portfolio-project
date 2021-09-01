@@ -21,4 +21,4 @@ RUN dotnet publish "LoginApi.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "LoginApi.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet LoginApi.dll
