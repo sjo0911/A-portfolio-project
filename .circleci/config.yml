@@ -4,7 +4,7 @@
 version: 2.1
 
 jobs:
-  build-and-test-angular-main:
+  deploy-webserver-and-gateway:
         docker:
           - image: circleci/node:16.8.0
         steps:
@@ -20,12 +20,29 @@ jobs:
                 name: compile angular project
                 command: cd frontend/angularMain && npm run build && cd .. && cd ..
             - run:
-                name: deploy
+                name: deploy webserver and gateway
                 command: | 
+                  cd Dockerfiles
+                  cd webAndGateway
                   sudo curl https://cli-assets.heroku.com/install.sh | sh
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911 --recursive
-                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911 web gateway login
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911 web gateway
+  deploy-loginApi:
+        docker:
+          - image: circleci/node:16.8.0
+        steps:
+            - checkout
+            - setup_remote_docker
+            - run:
+                name: deploy
+                command: | 
+                  cd Dockerfiles
+                  cd apiOne
+                  sudo curl https://cli-assets.heroku.com/install.sh | sh
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911api --recursive
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911api login
 
 
 
@@ -58,4 +75,4 @@ workflows:
   # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
   sample: 
     jobs:
-      - build-and-test-angular-main
+      - deploy-webserver-and-gateway
