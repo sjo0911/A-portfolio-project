@@ -11,9 +11,9 @@ USER appuser
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
 WORKDIR /src
-COPY ["../../LoginApi/LoginApi.csproj", "./"]
+COPY ["./LoginApi.csproj", "./"]
 RUN dotnet restore "LoginApi.csproj"
-COPY ../../LoginApi/ .
+COPY . .
 WORKDIR "/src/."
 RUN dotnet build "LoginApi.csproj" -c Release -o /app/build
 
