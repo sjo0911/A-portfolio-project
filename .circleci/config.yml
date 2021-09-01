@@ -22,13 +22,13 @@ jobs:
             - run:
                 name: deploy webserver and gateway
                 command: | 
-                  cd Dockerfiles
-                  cd webAndGateway
+                  cd webservers
+                  cd mainserver
                   sudo curl https://cli-assets.heroku.com/install.sh | sh
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911 --recursive
-                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911 web gateway
-  deploy-loginApi:
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911 web
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911 web
+  deploy-Apis:
         docker:
           - image: circleci/node:16.8.0
         steps:
@@ -43,6 +43,14 @@ jobs:
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911api --recursive
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911api login
+            - run:
+                name: deploy webserver and gateway
+                command: | 
+                  cd Gateway
+                  sudo curl https://cli-assets.heroku.com/install.sh | sh
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911 gateway
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911 gateway
 
 
 
@@ -76,4 +84,4 @@ workflows:
   sample: 
     jobs:
       - deploy-webserver-and-gateway
-      - deploy-loginApi
+      - deploy-Apis
