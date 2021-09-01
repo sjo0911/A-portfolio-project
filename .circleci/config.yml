@@ -76,3 +76,4 @@ workflows:
   sample: 
     jobs:
       - deploy-webserver-and-gateway
+      - deploy-loginApi
