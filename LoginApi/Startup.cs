@@ -47,7 +47,7 @@ namespace LoginApi
                     // this defines a CORS policy called "default"
                     options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("http://sjo0911.herokuapp.com/")
+                    policy.WithOrigins("http://sjo0911.herokuapp.com")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();
