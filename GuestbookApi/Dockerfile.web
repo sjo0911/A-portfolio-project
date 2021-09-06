@@ -6,10 +6,10 @@ ENV ASPNETCORE_URLS=http://+:80
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
 WORKDIR /src
-COPY ["Tutorial.Api.csproj", "./"]
-RUN dotnet restore "Tutorial.Api.csproj"
+COPY ["GuestbookApi.csproj", "./"]
+RUN dotnet restore "GuestbookApi.csproj"
 COPY . .
-RUN dotnet publish "Tutorial.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "GuestbookApi.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app

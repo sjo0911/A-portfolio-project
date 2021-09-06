@@ -20,3 +20,7 @@
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+.mat-form-field{
+  width:450px !important;
+}
+
