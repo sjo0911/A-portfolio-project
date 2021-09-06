@@ -1,4 +1,4 @@
-namespace Tutorial.Api.Configurations
+namespace GuestbookApi.Configurations
 {
     public class JwtConfig
     {

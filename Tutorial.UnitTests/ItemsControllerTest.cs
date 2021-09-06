@@ -9,13 +9,13 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Tutorial.Api.Controllers;
-using Tutorial.Api.Dtos;
-using Tutorial.Api.Entities;
-using Tutorial.Api.Repositories;
+using GuestbookApi.Api.Controllers;
+using GuestbookApi.Api.Dtos;
+using GuestbookApi.Api.Entities;
+using GuestbookApi.Api.Repositories;
 using Xunit;
 
-namespace Tutorial.UnitTests
+namespace GuestbookApi.UnitTests
 {
     public class ItemsControllerTest
     {

@@ -15,6 +15,11 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { UserPageComponent } from './pages/user-page/user-page.component';
+import { PostTextComponent } from './components/post-text/post-text.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+
 
 
 @NgModule({
@@ -23,7 +28,8 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
     SideNavComponent,
     MainPageComponent,
     LoginPageComponent,
-    UserPageComponent
+    UserPageComponent,
+    PostTextComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
 

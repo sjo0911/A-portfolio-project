@@ -50,6 +50,14 @@ jobs:
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911gateway --recursive
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911gateway web
+            - run:
+                name: deploy guestbookApi
+                command: | 
+                  cd GuestbookApi
+                  sudo curl https://cli-assets.heroku.com/install.sh | sh
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911guestbookapi --recursive
+                  HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911guestbookapi web
 
 
 

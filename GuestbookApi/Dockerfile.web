@@ -14,4 +14,4 @@ RUN dotnet publish "Tutorial.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "Tutorial.Api.dll"]
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet GuestbookApi.dll

@@ -23,10 +23,11 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Serializers;
 using MongoDB.Driver;
 using SharpCompress.Common;
-using Tutorial.Api.Repositories;
-using Tutorial.Api.Settings;
+using GuestbookApi.Repositories;
+using GuestbookApi.Settings;
+using MongoDB.Driver.Core.Configuration;
 
-namespace Tutorial.Api
+namespace GuestbookApi
 {
     public class Startup
     {
@@ -42,15 +43,26 @@ namespace Tutorial.Api
         {
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
             BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
-            var mongoDbsettings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+            //var mongoDbsettings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
             services.AddSingleton<IMongoClient>(ServiceProvider => {
-                return new MongoClient(mongoDbsettings.ConnectionString);
+                return new MongoClient("mongodb+srv://sven:eriksson@cluster0.2si5o.mongodb.net/postsDatabase?retryWrites=true&w=majority");
             });
 
             services.AddSingleton<IItemsRepository, MongoDbItemsRepository>();
             services.AddControllers(options => {
                 options.SuppressAsyncSuffixInActionNames = false;
             });
+            services.AddCors(options =>
+            {
+                    // AllowAnyOrigin will cause security issues
+                    options.AddPolicy("default", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+                });
+            });  
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "tutorial", Version = "v1" });
@@ -74,7 +86,7 @@ namespace Tutorial.Api
                 });
 
             services.AddHealthChecks()
-                .AddMongoDb(mongoDbsettings.ConnectionString,
+                .AddMongoDb(Configuration["MongoDbSettings::ConnectionString"],
                 name: "MongoDb",
                 timeout: TimeSpan.FromSeconds(3),
                 tags: new[] { "ready"}

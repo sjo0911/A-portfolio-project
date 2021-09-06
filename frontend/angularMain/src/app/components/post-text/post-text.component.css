@@ -1,0 +1,22 @@
+@import "../../../styles.css";
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.form-header {
+  width: 450px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.form-text {
+  width: 450px;
+  height: 150px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
