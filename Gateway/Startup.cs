@@ -37,7 +37,7 @@ namespace Gateway
             // this defines a CORS policy called "default"
             options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("http://localhost:4200")
+                    policy.AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();
