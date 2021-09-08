@@ -5,7 +5,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "http://sjo0911guestbookapi.herokuapp.com",
+                "Host": "sjo0911guestbookapi.herokuapp.com",
                 "Port": 80
             }
             ],
@@ -29,7 +29,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "http://sjo0911guestbookapi.herokuapp.com",
+                "Host": "sjo0911guestbookapi.herokuapp.com",
                 "Port": 80
             }
             ],
@@ -53,7 +53,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "http://sjo0911guestbookapi.herokuapp.com",
+                "Host": "sjo0911guestbookapi.herokuapp.com",
                 "Port": 80
             }
             ],
@@ -77,7 +77,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "http://sjo0911api.herokuapp.com",
+                "Host": "sjo0911api.herokuapp.com",
                 "Port": 80
             }
             ],
@@ -101,7 +101,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "http://sjo0911api.herokuapp.com",
+                "Host": "sjo0911api.herokuapp.com",
                 "Port": 80
             }
             ],
@@ -125,7 +125,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
-                    "Host": "http://sjo0911api.herokuapp.com",
+                    "Host": "sjo0911api.herokuapp.com",
                     "Port": 80
                 }
             ],
@@ -149,7 +149,7 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "http://sjo0911api.herokuapp.com",
+                "Host": "sjo0911api.herokuapp.com",
                 "Port": 80
             }
             ],
