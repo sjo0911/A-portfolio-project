@@ -23,7 +23,11 @@ namespace Gateway
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+        WebHost.CreateDefaultBuilder(args)
+        .ConfigureAppConfiguration((host, config) =>
+        {
+            config.AddJsonFile("ocelot.json");
+        })
+        .UseStartup<Startup>();
     }
 }
