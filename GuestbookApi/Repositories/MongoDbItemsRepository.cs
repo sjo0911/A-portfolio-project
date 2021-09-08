@@ -28,13 +28,13 @@ namespace GuestbookApi.Repositories
 
         public async Task DeletePostAsync(string id)
         {
-            var filter = filterBuilder.Eq(item => item.Id, id);
+            var filter = filterBuilder.Eq(item => item.id, id);
             await postsCollection.DeleteOneAsync(filter);
         }
 
         public async Task<Post> GetPostAsync(string id)
         {
-            var filter = filterBuilder.Eq(item => item.Id, id);
+            var filter = filterBuilder.Eq(item => item.id, id);
             return await postsCollection.Find(filter).SingleOrDefaultAsync();
         }
 
@@ -42,15 +42,15 @@ namespace GuestbookApi.Repositories
         {
             return await postsCollection.Find(new BsonDocument()).ToListAsync();
         }
-        public async Task<IEnumerable<Post>> GetPostsByCategoryAsync(string Category)
+        public async Task<IEnumerable<Post>> GetPostsByCategoryAsync(string category)
         {
-            var filter = filterBuilder.Eq(post => post.Category, Category);
+            var filter = filterBuilder.Eq(post => post.category, category);
             return await postsCollection.Find(filter).ToListAsync();
         }
 
         public async Task UpdatePostAsync(Post post)
         {
-            var filter = filterBuilder.Eq(excistingItem => excistingItem.Id, post.Id);
+            var filter = filterBuilder.Eq(excistingItem => excistingItem.id, post.id);
             await postsCollection.ReplaceOneAsync(filter, post);
         }
     }

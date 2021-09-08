@@ -15,7 +15,6 @@ export class MainPageComponent implements OnInit {
   }
 
   checkIfAdmin(): boolean {
-    console.log(this.accountService.userValue)
     if(!this.accountService.userValue || !this.accountService.userValue.scopes){
       return false
     } else if(this.accountService.userValue.scopes.some(scope => scope == "admin")) {

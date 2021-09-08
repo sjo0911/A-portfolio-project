@@ -5,12 +5,12 @@ namespace GuestbookApi.Dtos
     public record CreatePostDto
     {
         [Required]
-        public string Header {get; init;}
+        public string header {get; init;}
         [Required]
-        public string Text {get; init;}
+        public string text {get; init;}
         [Required]
-        public string Category {get; init;}
+        public string category {get; init;}
         [Required]
-        public string Name {get; set;}
+        public string name {get; set;}
     }
 }

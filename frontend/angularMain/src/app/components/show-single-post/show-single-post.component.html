@@ -2,4 +2,9 @@
   <mat-card-title class=header>{{post.header}}</mat-card-title>
   <mat-card-content class=content>{{post.text}}</mat-card-content>
   <mat-card-footer class=footer>Avsändare:{{post.name}} datum: {{post.createdDate | date : 'medium' : 'UTC+1' : 'en-US'}} </mat-card-footer>
+  <ng-container *ngIf=checkIfAdmin()>
+    <mat-card-actions align=end>
+      <button mat-button color="warn" (click)=deletePost()>Delete</button>
+    </mat-card-actions>
+  </ng-container>
 </mat-card>

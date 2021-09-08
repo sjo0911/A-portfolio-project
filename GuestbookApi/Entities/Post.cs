@@ -4,11 +4,11 @@ namespace GuestbookApi.Entities
 {
     public record Post
     {
-        public string Id {get; init;}
-        public string Header {get; init;}
-        public string Text {get; init;}
-        public DateTimeOffset CreatedDate {get; init;}
-        public string Category {get; init;}
-        public string Name {get; set;}
+        public string id {get; init;}
+        public string header {get; init;}
+        public string text {get; init;}
+        public DateTimeOffset createdDate {get; init;}
+        public string category {get; init;}
+        public string name {get; set;}
     }
 }

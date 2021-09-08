@@ -5,8 +5,8 @@ namespace GuestbookApi.Dtos
     public record UpdatePostDto
     {
         [Required]
-        public string Header {get; init;}
+        public string header {get; init;}
         [Required]
-        public string Text {get; init;}
+        public string text {get; init;}
     }
 }

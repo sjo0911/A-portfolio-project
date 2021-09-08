@@ -55,15 +55,15 @@ namespace GuestbookApi.Controllers
         public async Task<ActionResult<PostDto>> CreateItemAsync(CreatePostDto postDto)
         {
            Post post = new(){
-               Id = Guid.NewGuid().ToString(),
-               Header = postDto.Header,
-               Text = postDto.Text,
-               CreatedDate = DateTimeOffset.UtcNow,
-               Category = postDto.Category,
-               Name = postDto.Name
+               id = Guid.NewGuid().ToString(),
+               header = postDto.header,
+               text = postDto.text,
+               createdDate = DateTimeOffset.UtcNow,
+               category = postDto.category,
+               name = postDto.name
            };
            await repository.CreatePostAsync(post);
-           return CreatedAtAction("CreateItemAsync", new { id = post.Id}, post.AsDto());
+           return CreatedAtAction("CreateItemAsync", new { id = post.id}, post.AsDto());
         }
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateItemAsync(string id, UpdatePostDto postDto) 
@@ -75,8 +75,8 @@ namespace GuestbookApi.Controllers
             } 
             Post updatedPost = existingItem with
             {
-                Header = postDto.Header,
-                Text = postDto.Text
+                header = postDto.header,
+                text = postDto.text
             };
             await repository.UpdatePostAsync(updatedPost);
             return NoContent();

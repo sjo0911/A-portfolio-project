@@ -27,7 +27,6 @@ export class ShowPostsComponent implements OnInit {
 
 
   getPaginatorData(event : any){
-    console.log(event);
     if(event.pageIndex === this.pageIndex + 1){
         this.lowValue = this.lowValue + this.pageSize;
         this.highValue =  this.highValue + this.pageSize;
