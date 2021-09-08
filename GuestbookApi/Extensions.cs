@@ -10,12 +10,12 @@ namespace GuestbookApi
         {
             return new PostDto
             {   
-                Id = post.Id,
-                Header = post.Header,
-                Text = post.Text,
-                CreatedDate = post.CreatedDate,
-                Category = post.Category,
-                UserId = post.UserId
+                id = post.id,
+                header = post.header,
+                text = post.text,
+                createdDate = post.createdDate,
+                category = post.category,
+                name = post.name
             };
         }
     }
