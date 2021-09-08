@@ -5,8 +5,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "https://sjo0911guestbookapi.herokuapp.com",
-                "Port": 5000
+                "Host": "http://sjo0911guestbookapi.herokuapp.com",
+                "Port": 80
             }
             ],
             "UpstreamPathTemplate": "/api/posts/{id}",
@@ -29,8 +29,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "https://sjo0911guestbookapi.herokuapp.com",
-                "Port": 5000
+                "Host": "http://sjo0911guestbookapi.herokuapp.com",
+                "Port": 80
             }
             ],
             "UpstreamPathTemplate": "/api/posts/",
@@ -53,8 +53,8 @@
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
             {
-                "Host": "https://sjo0911guestbookapi.herokuapp.com",
-                "Port": 5000
+                "Host": "http://sjo0911guestbookapi.herokuapp.com",
+                "Port": 80
             }
             ],
             "UpstreamPathTemplate": "/api/posts/{category}/category",
@@ -78,7 +78,7 @@
             "DownstreamHostAndPorts": [
             {
                 "Host": "http://sjo0911api.herokuapp.com",
-                "Port": 5010
+                "Port": 80
             }
             ],
             "UpstreamPathTemplate": "/api/users/{id}",
@@ -102,7 +102,7 @@
             "DownstreamHostAndPorts": [
             {
                 "Host": "http://sjo0911api.herokuapp.com",
-                "Port": 5010
+                "Port": 80
             }
             ],
             "UpstreamPathTemplate": "/api/users/changepass/{id}",
@@ -126,7 +126,7 @@
             "DownstreamHostAndPorts": [
                 {
                     "Host": "http://sjo0911api.herokuapp.com",
-                    "Port": 5010
+                    "Port": 80
                 }
             ],
             "UpstreamPathTemplate": "/api/users/",
@@ -150,7 +150,7 @@
             "DownstreamHostAndPorts": [
             {
                 "Host": "http://sjo0911api.herokuapp.com",
-                "Port": 5010
+                "Port": 80
             }
             ],
             "UpstreamPathTemplate": "/api/login/",
@@ -165,6 +165,6 @@
         }
     ],
     "GlobalConfiguration": {
-        "BaseUrl": "http://sjo0911.herokuapp.com:5020"
+        "BaseUrl": "http://sjo0911.herokuapp.com:80"
     }
 }
