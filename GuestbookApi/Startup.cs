@@ -57,7 +57,7 @@ namespace GuestbookApi
                     // AllowAnyOrigin will cause security issues
                     options.AddPolicy("default", policy =>
                 {
-                    policy.AllowAnyOrigin()
+                    policy.SetIsOriginAllowed((host) => true)
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials();
