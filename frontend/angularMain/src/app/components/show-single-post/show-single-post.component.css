@@ -1,0 +1,16 @@
+.header {
+  text-align: center;
+}
+
+.content {
+  text-align: left;
+}
+
+.footer {
+  text-align: right;
+  margin-inline: 3px;
+}
+
+.card {
+  border-radius: 20px;
+}

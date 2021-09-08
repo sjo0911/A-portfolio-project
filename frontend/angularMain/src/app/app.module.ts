@@ -19,6 +19,9 @@ import { PostTextComponent } from './components/post-text/post-text.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ShowPostsComponent } from './components/show-posts/show-posts.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { ShowSinglePostComponent } from './components/show-single-post/show-single-post.component';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -31,7 +34,8 @@ import { ShowPostsComponent } from './components/show-posts/show-posts.component
     LoginPageComponent,
     UserPageComponent,
     PostTextComponent,
-    ShowPostsComponent
+    ShowPostsComponent,
+    ShowSinglePostComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,9 @@ import { ShowPostsComponent } from './components/show-posts/show-posts.component
     HttpClientModule,
     MatExpansionModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatPaginatorModule,
+    MatCardModule
   ],
   exports: [
 

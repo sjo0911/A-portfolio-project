@@ -18,5 +18,6 @@ namespace LoginApi.Models
         public string FirstName{get; set;}
         public string LastName{get; set;}
         public List<string> loginDates{get; set;}
+        public List<string> Scopes {get;set;}
     }
 }

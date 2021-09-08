@@ -19,6 +19,7 @@
                     <div *ngIf="loginF.password.errors.required">Password is required</div>
                 </div>
             </div>
+            <label *ngIf="errors" for="errors">{{errors}}</label>
             <div class="form-group">
                 <button [disabled]="loginLoading" mat-button color="accent">
                     <span *ngIf="loginLoading" class="spinner-border spinner-border-sm mr-1"></span>

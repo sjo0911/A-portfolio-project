@@ -13,5 +13,6 @@ namespace LoginApi.Models.Responces
         public List<string> loginDates{get; set;}
         public bool Success {get; set;}
         public List<string> Errors {get; set;}
+        public List<string> Scopes {get;set;}
     }
 }

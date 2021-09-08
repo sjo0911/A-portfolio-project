@@ -53,7 +53,8 @@ namespace LoginApi.Controllers
                 Email = user.Email.ToLower(),
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Password = hashPassword(user.Password)
+                Password = hashPassword(user.Password),
+                Scopes = user.Scopes
             };
             await _userService.CreateAsync(newUser);
             return CreatedAtAction("GetAsync", new { id = newUser.Id}, newUser );
@@ -64,7 +65,6 @@ namespace LoginApi.Controllers
         {
             var user = await _userService.GetAsync(id);
             if(user == null){
-                Console.WriteLine("hej");
                 return NotFound();
             }
                 
@@ -78,7 +78,6 @@ namespace LoginApi.Controllers
         {
             var user = await _userService.GetAsync(id);
             if(user == null){
-                 Console.WriteLine("hejsan");
                 return NotFound();
             }
                 
@@ -103,7 +102,6 @@ namespace LoginApi.Controllers
         {
             var user = _userService.GetAsync(id);
             if(user == null){
-                Console.WriteLine("hej");
                 return NotFound();
             }
             await _userService.RemoveAsync(id);

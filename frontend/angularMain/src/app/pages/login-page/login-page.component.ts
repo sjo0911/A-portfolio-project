@@ -16,6 +16,7 @@ export class LoginPageComponent implements OnInit {
   loginLoading = false;
   loginSubmitted = false;
   user$ :Observable<User | null>;
+  errors : string = '';
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -46,12 +47,15 @@ export class LoginPageComponent implements OnInit {
       .pipe(first())
       .subscribe({
         next: () => {
+          this.errors = "";
         },
         error: error => {
           this.loginLoading = false;
+          this.errors = error.error.errors[0];
         },
         complete: () => {
           this.loginLoading = false
+          this.errors = "";
         }
       })
   }

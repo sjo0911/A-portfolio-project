@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  ROOT_URL: "http://localhost:5020"
+  ROOT_URL: "http://sjo0911gateway.herokuapp.com:80"
 };
 
 /*

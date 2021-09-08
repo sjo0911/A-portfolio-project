@@ -1,0 +1,5 @@
+<mat-card class=card>
+  <mat-card-title class=header>{{post.header}}</mat-card-title>
+  <mat-card-content class=content>{{post.text}}</mat-card-content>
+  <mat-card-footer class=footer>Avsändare:{{post.name}} datum: {{post.createdDate | date : 'medium' : 'UTC+1' : 'en-US'}} </mat-card-footer>
+</mat-card>

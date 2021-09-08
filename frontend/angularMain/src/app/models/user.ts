@@ -8,6 +8,7 @@ export class User {
   lastName: string ;
   token: string;
   loginDates: string[];
+  scopes: string[];
   /**
    *
    */

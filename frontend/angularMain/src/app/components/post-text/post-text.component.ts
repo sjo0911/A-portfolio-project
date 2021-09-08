@@ -38,14 +38,14 @@ export class PostTextComponent implements OnInit {
   onSubmit() {
     this.postLoading = true;
     var newPost : Post = new Post();
-    newPost.Category = this.category;
-    newPost.Header = this.postF.header.value;
-    newPost.Text = this.postF.text.value;
-    if(this.accountService.userValue != null)
+    newPost.category = this.category;
+    newPost.header = this.postF.header.value;
+    newPost.text = this.postF.text.value;
+    if(this.category == "main" && this.accountService.userValue != null)
     {
-      newPost.UserId = this.accountService.userValue.id;
+      newPost.name = this.accountService.userValue.firstName + " " + this.accountService.userValue.lastName;
     } else {
-      newPost.UserId = "Anonymous";
+      newPost.name = "Anonymous";
     }
     this.guestbookService.post(newPost).subscribe(
       () => {},

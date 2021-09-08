@@ -60,7 +60,7 @@ namespace GuestbookApi.Controllers
                Text = postDto.Text,
                CreatedDate = DateTimeOffset.UtcNow,
                Category = postDto.Category,
-               UserId = postDto.UserId
+               Name = postDto.Name
            };
            await repository.CreatePostAsync(post);
            return CreatedAtAction("CreateItemAsync", new { id = post.Id}, post.AsDto());

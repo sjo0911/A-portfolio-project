@@ -1,8 +1,8 @@
 export class Post {
-  Id : string;
-  Header : string;
-  Text: string;
-  CreatedDate : string;
-  Category : string;
-  UserId : string;
+  id : string;
+  header : string;
+  text: string;
+  createdDate : string;
+  category : string;
+  name : string;
 }

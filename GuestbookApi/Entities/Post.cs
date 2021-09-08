@@ -9,6 +9,6 @@ namespace GuestbookApi.Entities
         public string Text {get; init;}
         public DateTimeOffset CreatedDate {get; init;}
         public string Category {get; init;}
-        public string UserId {get; set;}
+        public string Name {get; set;}
     }
 }

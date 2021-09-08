@@ -11,6 +11,6 @@ namespace GuestbookApi.Dtos
         [Required]
         public string Category {get; init;}
         [Required]
-        public string UserId {get; set;}
+        public string Name {get; set;}
     }
 }
