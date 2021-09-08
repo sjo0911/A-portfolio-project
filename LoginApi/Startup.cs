@@ -50,7 +50,7 @@ namespace LoginApi
                     policy.SetIsOriginAllowed((host) => true)
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials().;
+                        .AllowCredentials();
                 });
             });  
             services.AddMvc(options =>
@@ -81,6 +81,7 @@ namespace LoginApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseCors("default");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -89,8 +90,6 @@ namespace LoginApi
             }
 
             app.UseRouting();
-
-            app.UseCors("default");
 
             app.UseAuthorization();
 

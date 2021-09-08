@@ -33,7 +33,7 @@
                 "Port": 5000
             }
             ],
-            "UpstreamPathTemplate": "/api/items/",
+            "UpstreamPathTemplate": "/api/posts/",
             "UpstreamHttpMethod": [  "POST", "GET" ],
             "AutenticationOptions": {
                 "AuthenticationProviderKey": "Bearer",
