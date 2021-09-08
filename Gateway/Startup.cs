@@ -34,14 +34,14 @@ namespace Gateway
         {
             services.AddCors(options =>
             {
-            // this defines a CORS policy called "default"
-            options.AddPolicy("default", policy =>
-                {
-                    policy.AllowAnyOrigin()
-                        .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials();
-                });
+                // this defines a CORS policy called "default"
+                options.AddPolicy("default", policy =>
+                    {
+                        policy.SetIsOriginAllowed((host) => true)
+                            .AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .AllowCredentials();
+                    });
             });  
             services.Configure<JwtConfig>(Configuration.GetSection("JwtConfig"));
             services.AddAuthentication(options => {

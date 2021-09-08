@@ -106,6 +106,9 @@ namespace GuestbookApi
             {
                 app.UseHttpsRedirection();
             }
+
+            app.UseCors("default");
+
             app.UseRouting();
 
             app.UseAuthorization();

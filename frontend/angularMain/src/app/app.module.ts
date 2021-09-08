@@ -18,6 +18,7 @@ import { UserPageComponent } from './pages/user-page/user-page.component';
 import { PostTextComponent } from './components/post-text/post-text.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ShowPostsComponent } from './components/show-posts/show-posts.component';
 
 
 
@@ -29,7 +30,8 @@ import {MatInputModule} from '@angular/material/input';
     MainPageComponent,
     LoginPageComponent,
     UserPageComponent,
-    PostTextComponent
+    PostTextComponent,
+    ShowPostsComponent
   ],
   imports: [
     BrowserModule,
