@@ -67,6 +67,7 @@ namespace LoginApi.Controllers
                     LastName = existingUser.LastName,
                     loginDates = existingUser.loginDates,
                     Success = true,
+                    Scopes = existingUser.Scopes,
                     Token = jwtToken
                 });
 

@@ -1,3 +1,5 @@
+import { User } from './../../models/user';
+import { AccountService } from './../../services/account.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountService : AccountService) { }
 
   ngOnInit(): void {
+  }
+
+  checkIfAdmin(): boolean {
+    console.log(this.accountService.userValue)
+    if(!this.accountService.userValue || !this.accountService.userValue.scopes){
+      return false
+    } else if(this.accountService.userValue.scopes.some(scope => scope == "admin")) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
