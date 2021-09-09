@@ -1,7 +1,7 @@
-import { Post } from './../../models/post';
+import { Post } from '../../../models/post';
 import { Observable } from 'rxjs';
-import { GuestbookService } from './../../services/guestbook.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { GuestbookService } from '../../../services/guestbook.service';
+import { Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-show-posts',
@@ -9,8 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./show-posts.component.css']
 })
 export class ShowPostsComponent implements OnInit {
-  @Input()
-  category : string;
+  @Input() category : string;
+
+
   $posts : Observable<Post[]>;
   pageIndex:number = 0;
   pageSize:number = 2;

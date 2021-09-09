@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from './models/user';
 import { AccountService } from './services/account.service';
@@ -15,7 +16,7 @@ export class AppComponent {
   sidenavOpen : boolean;
   user$ : Observable<User | null>;
 
-  constructor(private accountService : AccountService) {
+  constructor(private accountService : AccountService, private router : Router) {
       this.sidenavOpen = true;
       this.user$ = accountService.user;
   }

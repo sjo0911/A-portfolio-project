@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class=main *ngIf="$posts | async as posts">
     <div *ngFor="let post of posts | slice: lowValue : highValue">
-      <app-show-single-post [post]=post (newItemEvent)="ngOnInit()"></app-show-single-post>
+      <app-show-single-post [post]=post (newItemEvent)="ngOnInit()" #singlePost></app-show-single-post>
       <br>
     </div>
     <mat-paginator class=paginator [length]="posts.length"

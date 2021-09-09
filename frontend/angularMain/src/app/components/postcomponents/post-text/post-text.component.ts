@@ -1,10 +1,11 @@
+import { User } from '../../../models/user';
 import { Observable } from 'rxjs';
-import { Post } from './../../models/post';
-import { AccountService } from './../../services/account.service';
+import { Post } from '../../../models/post';
+import { AccountService } from '../../../services/account.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { GuestbookService } from './../../services/guestbook.service';
-import { ipostInterface } from '../../services/ipost-interface';
-import { Component, Inject, InjectionToken, OnInit, Injectable, Input } from '@angular/core';
+import { GuestbookService } from '../../../services/guestbook.service';
+import { ipostInterface } from '../../../services/ipost-interface';
+import { Component, Inject, InjectionToken, OnInit, Injectable, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-post-text',
@@ -16,6 +17,7 @@ import { Component, Inject, InjectionToken, OnInit, Injectable, Input } from '@a
 export class PostTextComponent implements OnInit {
   @Input()
   category : string;
+  @Output() postedText = new EventEmitter<boolean>();
   postTextForm: FormGroup;
   postLoading = false;
   postSubmitted = false;
@@ -29,7 +31,8 @@ export class PostTextComponent implements OnInit {
   ngOnInit(): void {
     this.postTextForm = this.formBuilder.group({
       header: ['', Validators.required],
-      text: ['', Validators.required]
+      text: ['', Validators.required],
+      name: ['']
     });
   }
 
@@ -41,16 +44,24 @@ export class PostTextComponent implements OnInit {
     newPost.category = this.category;
     newPost.header = this.postF.header.value;
     newPost.text = this.postF.text.value;
-    if(this.category == "main" && this.accountService.userValue != null)
+    if(this.accountService.userValue != null)
     {
       newPost.name = this.accountService.userValue.firstName + " " + this.accountService.userValue.lastName;
-    } else {
-      newPost.name = "Anonymous";
+    } else
+    {
+      if(this.postF.name.value === null){
+        newPost.name = "anonymous"
+      } else {
+        newPost.name = this.postF.name.value;
+      }
     }
     this.guestbookService.post(newPost).subscribe(
       () => {},
       () => {this.postLoading = false;},
-      () => {this.postLoading = false;}
+      () => {
+        this.postLoading = false;
+        this.postedText.emit(true);
+      }
       )
   }
 

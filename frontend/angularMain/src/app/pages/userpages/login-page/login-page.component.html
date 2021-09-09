@@ -1,6 +1,3 @@
-
-
-
   <div class="wrapper">
     <h4 class="login-header">Login</h4>
     <div class="login-body">
@@ -21,7 +18,7 @@
             </div>
             <label *ngIf="errors" for="errors">{{errors}}</label>
             <div class="form-group">
-                <button [disabled]="loginLoading" mat-button color="accent">
+                <button [disabled]="loginLoading" mat-button color="accent" >
                     <span *ngIf="loginLoading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>

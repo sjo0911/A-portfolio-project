@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
-import { User } from './../../models/user';
-import { AccountService } from './../../services/account.service';
+import { User } from '../../../models/user';
+import { AccountService } from '../../../services/account.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -56,6 +56,7 @@ export class LoginPageComponent implements OnInit {
         complete: () => {
           this.loginLoading = false
           this.errors = "";
+          this.router.navigate([{ outlets: { userSidebar: [ 'userPage'] }}]);
         }
       })
   }

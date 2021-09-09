@@ -16,6 +16,16 @@
       <textarea matInput formControlName="text" placeholder="Text here!" class="form-text" [ngClass]="{ 'is-invalid': postSubmitted && postF.text.errors }"></textarea>
       </mat-form-field>
     </div>
+    <ng-container *ngIf="category==='guestbook'">
+      <div class="form-group">
+        <mat-label>Name</mat-label>
+      </div>
+        <div class="form-group">
+          <mat-form-field>
+        <input matInput formControlName="name" placeholder="Your name here!" class="form-header" />
+      </mat-form-field>
+        </div>
+    </ng-container>
     <div class="form-group">
       <button [disabled]="postLoading" mat-button color="accent">
           <span *ngIf="postLoading" class="spinner-border spinner-border-sm mr-1"></span>

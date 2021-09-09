@@ -1,6 +1,6 @@
-import { GuestbookService } from './../../services/guestbook.service';
-import { AccountService } from './../../services/account.service';
-import { Post } from './../../models/post';
+import { GuestbookService } from '../../../services/guestbook.service';
+import { AccountService } from '../../../services/account.service';
+import { Post } from '../../../models/post';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 
@@ -12,8 +12,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class ShowSinglePostComponent implements OnInit {
   @Input()
   post : Post;
-  @Output()
-  newItemEvent = new EventEmitter<string>();
+  @Output() newItemEvent = new EventEmitter<string>();
 
   constructor(private accountService : AccountService, private guestbookService: GuestbookService) {
    }

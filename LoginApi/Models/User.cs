@@ -15,7 +15,9 @@ namespace LoginApi.Models
         public string Email {get; set;}
         public string Password {get; set;}
         public string oldPassword{get; set;}
+        [BsonRequired]
         public string FirstName{get; set;}
+        [BsonRequired]
         public string LastName{get; set;}
         public List<string> loginDates{get; set;}
         public List<string> Scopes {get;set;}

@@ -1,0 +1,5 @@
+<div class="header"><h1 style="text-align: center;">Guestbook!</h1></div>
+<!--<app-show-posts [category]="'guestbook'"  guestbook defines how the components will work -->
+<app-show-posts [category]="'guestbook'"></app-show-posts>
+<br>
+<app-post-text [category]="'guestbook'" (postedText)="ngOnInit()"></app-post-text>

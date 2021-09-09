@@ -1,7 +1,8 @@
 <div class="wrapper">
   <div class="header"><h1 style="text-align: center;">Welcome!</h1></div>
-  <app-show-posts [category]="'main'"></app-show-posts>
+  <app-show-posts [category]="'main'" ></app-show-posts>
+  <br>
   <ng-container *ngIf=checkIfAdmin()>
-    <app-post-text [category]="'main'"></app-post-text>
+    <app-post-text [category]="'main'" (postedText)="ngOnInit()"></app-post-text>
   </ng-container>
 </div>
