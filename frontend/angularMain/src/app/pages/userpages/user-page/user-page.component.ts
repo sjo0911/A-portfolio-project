@@ -63,6 +63,7 @@ export class UserPageComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
+    this.router.navigate(['', { outlets: { userSidebar: [ 'Login'] }}]);
   }
 
 }

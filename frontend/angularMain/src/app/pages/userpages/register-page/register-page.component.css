@@ -1,0 +1,13 @@
+.wrapper {
+  margin-top: 30px;
+  display: list-item;
+}
+
+.regLabel {
+  padding: 2px;
+  margin: 5px
+}
+
+.form-control {
+  float: right;
+}

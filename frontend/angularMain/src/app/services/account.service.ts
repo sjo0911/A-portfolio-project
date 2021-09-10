@@ -46,7 +46,11 @@ export class AccountService {
   }
 
   register(user : User) {
-    return this.webReqService.post("api/users", user);
+    return this.webReqService.post("api/users", user).pipe(map(regedUser => {
+        localStorage.setItem('user', JSON.stringify(regedUser));
+        this.userSubject.next(regedUser as User);
+      return regedUser;
+    }));
   }
 
   getAll() {

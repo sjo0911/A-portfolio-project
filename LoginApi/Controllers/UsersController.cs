@@ -1,14 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using LoginApi.Configuration;
 using LoginApi.Models;
 using LoginApi.Models.Responces;
 using LoginApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using MongoDB.Driver;
 
 namespace LoginApi.Controllers
@@ -18,9 +22,11 @@ namespace LoginApi.Controllers
     public class UsersController : ControllerBase
     {
         private readonly UserService _userService;
-        public UsersController(UserService userService)
+        private readonly JwtConfig _jwtConfig;
+        public UsersController(UserService userService, IOptionsMonitor<JwtConfig> optionsMonitor)
         {
             _userService = userService;
+            _jwtConfig = optionsMonitor.CurrentValue;
         }
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpGet]
@@ -56,8 +62,25 @@ namespace LoginApi.Controllers
                 Password = hashPassword(user.Password),
                 Scopes = user.Scopes
             };
+            
+            if(newUser.loginDates == null)
+            {
+                newUser.loginDates = new();
+            }          
+            newUser.loginDates.Add(DateTime.UtcNow.ToString());
             await _userService.CreateAsync(newUser);
-            return CreatedAtAction("GetAsync", new { id = newUser.Id}, newUser );
+            var jwtToken = GenerateJwtToken(newUser);
+            return Ok(new AuthResult(){
+                Id = newUser.Id,
+                UserName = newUser.UserName,
+                Email = newUser.Email,
+                FirstName = newUser.FirstName,
+                LastName = newUser.LastName,
+                loginDates = newUser.loginDates,
+                Success = true,
+                Scopes = newUser.Scopes,
+                Token = jwtToken
+                });
         }
 
         [HttpPut("{id:length(36)}")]
@@ -112,6 +135,31 @@ namespace LoginApi.Controllers
             const int workFactor = 13;
             return BCrypt.Net.BCrypt.HashPassword(password, workFactor);
         }   
+
+        private string GenerateJwtToken(User user)
+        {
+            var jwtTokenHandler = new JwtSecurityTokenHandler();
+
+            var key = Encoding.ASCII.GetBytes(_jwtConfig.Secret);
+            
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new []
+                {
+                    new Claim("Id", user.Id),
+                    new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                    new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                }),
+                Expires = DateTime.UtcNow.AddHours(6),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = jwtTokenHandler.CreateToken(tokenDescriptor);
+            var jwtToken = jwtTokenHandler.WriteToken(token);
+
+            return jwtToken;
+        }
 
 
     }

@@ -56,7 +56,7 @@ export class LoginPageComponent implements OnInit {
         complete: () => {
           this.loginLoading = false
           this.errors = "";
-          this.router.navigate([{ outlets: { userSidebar: [ 'userPage'] }}]);
+          this.router.navigate(['', { outlets: { userSidebar: [ 'UserPage'] }}]);
         }
       })
   }

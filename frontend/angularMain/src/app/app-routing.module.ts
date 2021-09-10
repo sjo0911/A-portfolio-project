@@ -10,11 +10,10 @@ import { UserPageComponent } from './pages/userpages/user-page/user-page.compone
 const routes: Routes = [
   { path:  '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: MainPageComponent, outlet: "primary" },
-  { path: 'Login', component: LoginPageComponent, outlet: 'userSidebar'},
+  { path: 'Login', component: LoginPageComponent, outlet: 'userSidebar' },
   { path: 'Guestbook', component: GuestbookPageComponent, outlet: "primary"},
-
   { path: 'UserPage', component: UserPageComponent, outlet: 'userSidebar', canActivate: [AuthGuard]},
-  {path: 'Register', component: RegisterPageComponent, outlet: 'userSidebar'},
+  {path: 'Login/Register', component: RegisterPageComponent, outlet: 'userSidebar'}
 
 
 ];
