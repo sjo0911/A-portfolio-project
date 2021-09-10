@@ -3,7 +3,7 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label class="regLabel" for="email">Email</label>
-      <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+      <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
       <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
           <div *ngIf="f.email.errors.required">Email is required</div>
           <div *ngIf="f.email.errors.email">You must enter an email</div>
@@ -25,6 +25,15 @@
             <div *ngIf="f.password.errors.required">Password is required</div>
             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
         </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="Confirm Password">Confirm Password</label>
+      <input type="password" formControlName="confirmPass" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPass.errors }" />
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+      </div>
+      <div class="invalid-feedback" *ngIf="!matchingPass">Password dont match</div>
     </div>
     <br>
     <div class="form-group">

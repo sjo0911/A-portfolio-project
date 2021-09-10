@@ -15,6 +15,8 @@ export class RegisterPageComponent implements OnInit {
   loading = false;
   submitted = false;
   errors : string = '';
+  matchingPass = true;
+
   constructor(
       private formBuilder: FormBuilder,
       private router: Router,
@@ -32,7 +34,8 @@ export class RegisterPageComponent implements OnInit {
           firstName: ['', Validators.required],
           lastName: ['', Validators.required],
           username: ['', Validators.required],
-          password: ['', [Validators.required, Validators.minLength(6)]]
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPass: ['confirmPass', Validators.required]
       });
   }
 
@@ -44,21 +47,23 @@ export class RegisterPageComponent implements OnInit {
       if (this.registerForm.invalid) {
           return;
       }
+      if(this.f.confirmPass.value == null || this.f.password.value != this.f.confirmPass.value){
+        this.matchingPass = false;
+        return;
+      }
 
       this.loading = true;
 
       var newUser : User = {
         email: this.f.email.value,
-        firstName: this.f.firstname.value,
-        lastName: this.f.lastname.value,
+        firstName: this.f.firstName.value,
+        lastName: this.f.lastName.value,
         username: this.f.username.value,
+        password: this.f.password.value,
         scopes: new Array(),
         loginDates: new Array()
       } as User;
-      newUser.email = this.f.email.value;
-      newUser.firstName = this.f.firstname.value;
-      newUser
-
+      console.log(newUser);
       this.accountService.register(newUser)
       .pipe(first())
       .subscribe({
@@ -66,8 +71,15 @@ export class RegisterPageComponent implements OnInit {
           this.errors = "";
         },
         error: error => {
+          console.log(error);
           this.loading = false;
-          this.errors = error.error.errors[0];
+          if(error.error != null)
+          {
+            this.errors = error.error.errors[0]
+          } else {
+            this.errors = error.statusText;
+          }
+
         },
         complete: () => {
           this.loading = false
