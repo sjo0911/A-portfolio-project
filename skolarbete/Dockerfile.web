@@ -1,6 +1,6 @@
 FROM jboss/wildfly
 COPY /EShopJsf/target/eshopjsf.war /opt/jboss/wildfly/standalone/deployments/
 COPY /EShop/target/EShop.war /opt/jboss/wildfly/standalone/deployments/
-EXPOSE 8080
+EXPOSE $PORT
 
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
