@@ -7,7 +7,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/javagames/memorygame/', function (req, res) {
-    res.sendFile('index.html', {root: 'javagames/memorygame'});
+    res.sendFile('index.html', {root: 'dist/javagames/memorygame'});
 });
 
 app.use('/javagames/memorygame/public', express.static('./dist/javagames/memorygame/public'));
