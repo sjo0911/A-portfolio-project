@@ -10,6 +10,6 @@ app.get('/javagames/memorygame/', function (req, res) {
     res.sendFile('index.html', {root: 'javagames/memorygame'});
 });
 
-app.use('javagames/memorygame/images', express.static('javagames/memorygame'));
+app.use('/javagames/memorygame/public', express.static('./dist/javagames/memorygame/public'));
 
 app.listen(process.env.PORT || 8080);
