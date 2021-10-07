@@ -20,7 +20,10 @@ jobs:
                 name: compile angular project
                 command: cd frontend/angularMain && npm run build && cd .. && cd ..
             - run:
-                name: deploy webserver and gateway
+                name: copy javatutorial to webserver
+                command: cp -avr /app/CsharpRestApi/frontend/javagames/ /app/CsharpRestApi/webservers/mainserver/dist/
+            - run:
+                name: deploy webserver
                 command: | 
                   cd webservers
                   cd mainserver
@@ -43,7 +46,7 @@ jobs:
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911api --recursive
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911api web
             - run:
-                name: deploy webserver and gateway
+                name: deploy gateway
                 command: | 
                   cd Gateway
                   sudo curl https://cli-assets.heroku.com/install.sh | sh
