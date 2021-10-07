@@ -3,51 +3,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const cardArray = [
         {
             name: 'fries',
-            img: 'images/fries.png'
+            img: 'dist/javagames/memorygame/images/fries.png'
         },
         {
             name: 'fries',
-            img: 'images/fries.png'
+            img: 'dist/javagames/memorygame/images/fries.png'
         },
         {
             name: 'cheeseburger',
-            img: 'images/cheeseburger.png'
+            img: 'dist/javagames/memorygame/images/cheeseburger.png'
         },
         {
             name: 'cheeseburger',
-            img: 'images/cheeseburger.png'
+            img: 'dist/javagames/memorygame/images/cheeseburger.png'
         },
         {
             name: 'hotdog',
-            img: 'images/hotdog.png'
+            img: 'dist/javagames/memorygame/images/hotdog.png'
         },
         {
             name: 'hotdog',
-            img: 'images/hotdog.png'
+            img: 'dist/javagames/memorygame/images/hotdog.png'
         },
         {
             name: 'ice-cream',
-            img: 'images/ice-cream.png'
+            img: 'dist/javagames/memorygame/images/ice-cream.png'
         },
         {
             name: 'ice-cream',
-            img: 'images/ice-cream.png'
+            img: 'dist/javagames/memorygame/images/ice-cream.png'
         },
         {
             name: 'milkshake',
-            img: 'images/milkshake.png'
+            img: 'dist/javagames/memorygame/images/milkshake.png'
         },
         {
             name: 'milkshake',
-            img: 'images/milkshake.png'
+            img: 'dist/javagames/memorygame/images/milkshake.png'
         },
         {
             name: 'pizza',
-            img: 'images/pizza.png'
+            img: 'dist/javagames/memorygame/images/pizza.png'
         },
         {
             name: 'pizza',
-            img: 'images/pizza.png'
+            img: 'dist/javagames/memorygame/images/pizza.png'
         }
     ]
 
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function createBoard() {
         for (let i = 0; i < cardArray.length; i++) {
             var card = document.createElement('img');
-            card.setAttribute('src', 'images/blank.png');
+            card.setAttribute('src', 'dist/javagames/memorygame/images/blank.png');
             card.setAttribute('data-id', i);
             card.addEventListener('click', flipcard);
             grid.appendChild(card);
@@ -86,12 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionTwoId = cardsChosenId[1];
         if (cardsChosen[0] === cardsChosen[1]){
             alert('You found a match');
-            cards[optionOneId].setAttribute('src', 'images/white.png');
-            cards[optionTwoId].setAttribute('src', 'images/white.png');
+            cards[optionOneId].setAttribute('src', 'dist/javagames/memorygame/images/white.png');
+            cards[optionTwoId].setAttribute('src', 'dist/javagames/memorygame/images/white.png');
             cardsWon.push(cardsChosen);
         } else {
-            cards[optionOneId].setAttribute('src', 'images/blank.png');
-            cards[optionTwoId].setAttribute('src', 'images/blank.png');
+            cards[optionOneId].setAttribute('src', 'dist/javagames/memorygame/images/blank.png');
+            cards[optionTwoId].setAttribute('src', 'dist/javagames/memorygame/images/blank.png');
             alert('Sorry, try again!');
         }
         resultDisplay.textContent = cardsWon.length;
