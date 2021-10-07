@@ -63,7 +63,7 @@ jobs:
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911guestbookapi web
   deploy-wildfire:
         docker:
-          - image: cimg/openjdk:17.0.0
+          - image: cimg/openjdk:8.0.302
         steps:
             - checkout
             - setup_remote_docker
