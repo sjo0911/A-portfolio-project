@@ -1,0 +1,47 @@
+ <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html">
+    
+    <head >
+    	<title>Order</title>
+    </head>
+    <body>
+    	 <h:dataTable value="#{cartBean.getProductInCartList()}" var="p">
+    		<h:column>
+    			<f:facet name="header">Produktnamn:</f:facet>
+    			<h:outputLabel value="#{p.getProduct().name}"></h:outputLabel>
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Pris</f:facet>
+    			<h:outputLabel value="#{p.getProduct().price} kr"></h:outputLabel>
+    		</h:column>
+    		<h:column>
+    			<f:facet name="header">Antal i varukorgen</f:facet>
+    			<h:outputLabel value="#{p.getAmount()} st"></h:outputLabel>
+    		</h:column>
+			 <h:column>
+    			<f:facet name="header">Summa</f:facet>
+    			<h:outputLabel value="#{p.totalAmount()} kr"></h:outputLabel>
+    		</h:column>
+    	</h:dataTable>  
+    	<br></br>
+    	<h:outputLabel>Totalsumma</h:outputLabel>
+    	<br></br>
+    	<h:outputText value="#{cartBean.cartsTotalAmount()} kr"></h:outputText>
+    	<h:form>
+    		Förnamn: <h:inputText id="firstName" value="#{orderBean.getOrder().getCustomer().firstName}"/><br/>
+    		Efternamn: <h:inputText id="lastName" value="#{orderBean.getOrder().getCustomer().lastName}"/><br/>
+    		Email: <h:inputText id="email" value="#{orderBean.getOrder().getCustomer().email}"/><br/>
+    		Country: <h:inputText id="country" value="#{orderBean.getOrder().getCustomer().getAdress().country}"/><br/>
+    		Stad: <h:inputText id="city" value="#{orderBean.getOrder().getCustomer().getAdress().city}"/><br/>
+    		Gata: <h:inputText id="street" value="#{orderBean.getOrder().getCustomer().getAdress().street}"/><br/>
+    		Gatunummer: <h:inputText id="streetNumber" value="#{orderBean.getOrder().getCustomer().getAdress().streetNumber}"/><br/>
+    		<h:outputText value="#{orderBean.orderCompleted}" 
+	    		rendered="#{orderBean.orderCompleted != null}"/>
+    		<h:commandButton value="Beställ" action="#{orderBean.makeOrder(cartBean.getProductInCartList())}"/>
+    	</h:form>
+    	<form>
+     	 	<h:button value="Home" outcome="index"/>
+      	</form>
+        </body>
+</html>

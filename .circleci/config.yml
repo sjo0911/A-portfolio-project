@@ -61,6 +61,26 @@ jobs:
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a sjo0911guestbookapi --recursive
                   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a sjo0911guestbookapi web
+  deploy-wildfire:
+        docker:
+          - image: cimg/openjdk:17.0.0
+        steps:
+            - checkout
+            - setup_remote_docker
+            - run:
+                name: maven package EShop
+                command: cd skolarbete/EShop && mvn package
+            - run:
+                name: maven package EShopJsf
+                command: cd skolarbete/EShopJsf && mvn package
+            - run:
+                name: deploy wildfly server with war files
+                command: | 
+                  cd skolarbete
+                  sudo curl https://cli-assets.heroku.com/install.sh | sh
+                  HEROKU_API_KEY=${HEROKU_TOKEN2} heroku container:login
+                  HEROKU_API_KEY=${HEROKU_TOKEN2} heroku container:push -a sjo0911wildfly --recursive
+                  HEROKU_API_KEY=${HEROKU_TOKEN2} heroku container:release -a sjo0911wildfly web
 
 
 
