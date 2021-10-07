@@ -4,7 +4,7 @@
 version: 2.1
 
 jobs:
-  deploy-webserver-and-gateway:
+  deploy-webserver:
         docker:
           - image: circleci/node:16.8.0
         steps:
@@ -20,8 +20,11 @@ jobs:
                 name: compile angular project
                 command: cd frontend/angularMain && npm run build && cd .. && cd ..
             - run:
+                name: run tree
+                command: tree
+            - run:
                 name: copy javatutorial to webserver
-                command: cp -avr /app/CsharpRestApi/frontend/javagames/ /app/CsharpRestApi/webservers/mainserver/dist/
+                command: cp -avr frontend/javagames/ webservers/mainserver/dist/
             - run:
                 name: deploy webserver
                 command: | 
@@ -93,5 +96,5 @@ workflows:
   # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
   sample: 
     jobs:
-      - deploy-webserver-and-gateway
+      - deploy-webserver
       - deploy-Apis
