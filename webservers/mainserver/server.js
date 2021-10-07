@@ -12,4 +12,10 @@ app.get('/javagames/memorygame/', function (req, res) {
 
 app.use('/javagames/memorygame/public', express.static('./dist/javagames/memorygame/public'));
 
+app.get('/javagames/whackamole/', function (req, res) {
+    res.sendFile('index.html', {root: 'dist/javagames/whackamole'});
+});
+
+app.use('/javagames/whackamole/public', express.static('./dist/javagames/whackamole/public'));
+
 app.listen(process.env.PORT || 8080);

@@ -20,7 +20,7 @@ jobs:
                 name: compile angular project
                 command: cd frontend/angularMain && npm run build && cd .. && cd ..
             - run:
-                name: copy javatutorial to webserver
+                name: copy javagames to webserver
                 command: cp -avr frontend/javagames/ webservers/mainserver/dist/
             - run:
                 name: deploy webserver

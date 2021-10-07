@@ -1,0 +1,22 @@
+.game, .carddiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+}
+
+.content {
+  text-align: left;
+}
+
+.card {
+  border-radius: 20px;
+  width: 500px;
+}
