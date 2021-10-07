@@ -24,6 +24,7 @@ import {MatCardModule} from '@angular/material/card';
 import { GuestbookPageComponent } from './pages/guestbook/guestbook-page/guestbook-page.component';
 import { LoginPageComponent } from './pages/userpages/login-page/login-page.component';
 import { UserPageComponent } from './pages/userpages/user-page/user-page.component';
+import { JavagamesComponent } from './pages/javagames/javagames.component';
 
 
 
@@ -39,7 +40,8 @@ import { UserPageComponent } from './pages/userpages/user-page/user-page.compone
     ShowPostsComponent,
     ShowSinglePostComponent,
     GuestbookPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    JavagamesComponent
   ],
   imports: [
     BrowserModule,

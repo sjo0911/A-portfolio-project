@@ -1,3 +1,4 @@
+import { JavagamesComponent } from './pages/javagames/javagames.component';
 import { RegisterPageComponent } from './pages/userpages/register-page/register-page.component';
 import { GuestbookPageComponent } from './pages/guestbook/guestbook-page/guestbook-page.component';
 import { MainPageComponent } from './pages/mainpages/main-page/main-page.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: MainPageComponent, outlet: "primary" },
   { path: 'Login', component: LoginPageComponent, outlet: 'userSidebar' },
   { path: 'Guestbook', component: GuestbookPageComponent, outlet: "primary"},
+  { path: 'Javagames', component: JavagamesComponent, outlet: "primary"},
   { path: 'UserPage', component: UserPageComponent, outlet: 'userSidebar', canActivate: [AuthGuard]},
   {path: 'Login/Register', component: RegisterPageComponent, outlet: 'userSidebar'}
 
