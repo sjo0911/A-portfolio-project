@@ -115,3 +115,4 @@ workflows:
     jobs:
       - deploy-webserver
       - deploy-Apis
+      - deploy-wildfire
