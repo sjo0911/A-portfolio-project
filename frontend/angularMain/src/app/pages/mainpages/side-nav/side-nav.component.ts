@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
-
+  showSchoolWork: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  toggleScoolwork(){
+    if(this.showSchoolWork){
+      this.showSchoolWork = false;
+    } else {
+      this.showSchoolWork = true;
+    }
   }
 
 }

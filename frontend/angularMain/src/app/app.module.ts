@@ -25,6 +25,7 @@ import { GuestbookPageComponent } from './pages/guestbook/guestbook-page/guestbo
 import { LoginPageComponent } from './pages/userpages/login-page/login-page.component';
 import { UserPageComponent } from './pages/userpages/user-page/user-page.component';
 import { JavagamesComponent } from './pages/javagames/javagames.component';
+import { JavaeeEshopComponent } from './pages/schoolwork/javaee-eshop/javaee-eshop.component';
 
 
 
@@ -41,7 +42,8 @@ import { JavagamesComponent } from './pages/javagames/javagames.component';
     ShowSinglePostComponent,
     GuestbookPageComponent,
     RegisterPageComponent,
-    JavagamesComponent
+    JavagamesComponent,
+    JavaeeEshopComponent
   ],
   imports: [
     BrowserModule,
