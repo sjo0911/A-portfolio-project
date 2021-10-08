@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
-import com.jonasson.eshop.bt.exceptions.DBException;
+import com.jonasson.eshopJsf.bt.exceptions.DBException;
 import com.jonasson.eshopJsf.bt.services.IOrderService;
 import com.jonasson.eshopJsf.bt.services.OrderService;
 import com.jonasson.eshopJsf.dt.models.Adress;

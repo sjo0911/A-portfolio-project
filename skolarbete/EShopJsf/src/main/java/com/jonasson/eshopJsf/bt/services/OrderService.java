@@ -9,7 +9,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jonasson.eshop.bt.exceptions.DBException;
+import com.jonasson.eshopJsf.bt.exceptions.DBException;
 import com.jonasson.eshopJsf.dt.models.Order;
 
 public class OrderService implements IOrderService {
@@ -17,7 +17,7 @@ public class OrderService implements IOrderService {
 	@Override
 	public void post(Order order) throws DBException {
 		try {
-			URL url = new URL ("http://http://sjo0911wildfly.herokuapp.com/EShop/order");
+			URL url = new URL ("http://127.0.0.1:8080/EShop/order");
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("POST");
 			con.setRequestProperty("Content-Type", "application/json; utf-8");

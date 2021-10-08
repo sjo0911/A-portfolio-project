@@ -4,44 +4,48 @@
     
     <head >
     	<title>Order</title>
+    	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous"/>
     </head>
-    <body>
-    	 <h:dataTable value="#{cartBean.getProductInCartList()}" var="p">
-    		<h:column>
-    			<f:facet name="header">Produktnamn:</f:facet>
-    			<h:outputLabel value="#{p.getProduct().name}"></h:outputLabel>
-    		</h:column>
-    		<h:column>
-    			<f:facet name="header">Pris</f:facet>
-    			<h:outputLabel value="#{p.getProduct().price} kr"></h:outputLabel>
-    		</h:column>
-    		<h:column>
-    			<f:facet name="header">Antal i varukorgen</f:facet>
-    			<h:outputLabel value="#{p.getAmount()} st"></h:outputLabel>
-    		</h:column>
-			 <h:column>
-    			<f:facet name="header">Summa</f:facet>
-    			<h:outputLabel value="#{p.totalAmount()} kr"></h:outputLabel>
-    		</h:column>
-    	</h:dataTable>  
-    	<br></br>
-    	<h:outputLabel>Totalsumma</h:outputLabel>
-    	<br></br>
-    	<h:outputText value="#{cartBean.cartsTotalAmount()} kr"></h:outputText>
-    	<h:form>
-    		Förnamn: <h:inputText id="firstName" value="#{orderBean.getOrder().getCustomer().firstName}"/><br/>
-    		Efternamn: <h:inputText id="lastName" value="#{orderBean.getOrder().getCustomer().lastName}"/><br/>
-    		Email: <h:inputText id="email" value="#{orderBean.getOrder().getCustomer().email}"/><br/>
-    		Country: <h:inputText id="country" value="#{orderBean.getOrder().getCustomer().getAdress().country}"/><br/>
-    		Stad: <h:inputText id="city" value="#{orderBean.getOrder().getCustomer().getAdress().city}"/><br/>
-    		Gata: <h:inputText id="street" value="#{orderBean.getOrder().getCustomer().getAdress().street}"/><br/>
-    		Gatunummer: <h:inputText id="streetNumber" value="#{orderBean.getOrder().getCustomer().getAdress().streetNumber}"/><br/>
-    		<h:outputText value="#{orderBean.orderCompleted}" 
-	    		rendered="#{orderBean.orderCompleted != null}"/>
-    		<h:commandButton value="Beställ" action="#{orderBean.makeOrder(cartBean.getProductInCartList())}"/>
-    	</h:form>
-    	<form>
-     	 	<h:button value="Home" outcome="index"/>
-      	</form>
+    <body style="background-color: powderblue;">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
+    	<div style="margin: 10px;">
+	    	 <h:dataTable value="#{cartBean.getProductInCartList()}" var="p">
+	    		<h:column>
+	    			<f:facet name="header">Produktnamn:</f:facet>
+	    			<h:outputLabel value="#{p.getProduct().name}"></h:outputLabel>
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Pris</f:facet>
+	    			<h:outputLabel value="#{p.getProduct().price} kr"></h:outputLabel>
+	    		</h:column>
+	    		<h:column>
+	    			<f:facet name="header">Antal i varukorgen</f:facet>
+	    			<h:outputLabel value="#{p.getAmount()} st"></h:outputLabel>
+	    		</h:column>
+				 <h:column>
+	    			<f:facet name="header">Summa</f:facet>
+	    			<h:outputLabel value="#{p.totalAmount()} kr"></h:outputLabel>
+	    		</h:column>
+	    	</h:dataTable>  
+	    	<br></br>
+	    	<h:outputLabel>Totalsumma</h:outputLabel>
+	    	<br></br>
+	    	<h:outputText value="#{cartBean.cartsTotalPrice()} kr"></h:outputText>
+	    	<h:form>
+	    		Förnamn: <h:inputText id="firstName" value="#{orderBean.getOrder().getCustomer().firstName}"/><br/>
+	    		Efternamn: <h:inputText id="lastName" value="#{orderBean.getOrder().getCustomer().lastName}"/><br/>
+	    		Email: <h:inputText id="email" value="#{orderBean.getOrder().getCustomer().email}"/><br/>
+	    		Country: <h:inputText id="country" value="#{orderBean.getOrder().getCustomer().getAdress().country}"/><br/>
+	    		Stad: <h:inputText id="city" value="#{orderBean.getOrder().getCustomer().getAdress().city}"/><br/>
+	    		Gata: <h:inputText id="street" value="#{orderBean.getOrder().getCustomer().getAdress().street}"/><br/>
+	    		Gatunummer: <h:inputText id="streetNumber" value="#{orderBean.getOrder().getCustomer().getAdress().streetNumber}"/><br/>
+	    		<h:outputText value="#{orderBean.orderCompleted}" 
+		    		rendered="#{orderBean.orderCompleted != null}"/>
+	    		<h:commandButton class="btn btn-success" value="Beställ" action="#{orderBean.makeOrder(cartBean.getProductInCartList())}"/>
+	    	</h:form>
+	    	<form>
+	     	 	<h:button class="btn btn-success" value="Home" outcome="index"/>
+	      	</form>
+      	</div>
         </body>
 </html>

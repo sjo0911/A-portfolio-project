@@ -2,6 +2,7 @@ package com.jonasson.eshopJsf.ft.beans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
@@ -51,12 +52,21 @@ public class CartBean implements Serializable {
 		}
 	}
 	
-	public double cartsTotalAmount(){
+	public double cartsTotalPrice(){
 		double amount = 0;
 		for(CartItem cartItem: cartItemList) {
 			amount += cartItem.totalAmount();
 		}
 		return amount;
+	}
+	
+	public int numberOfItems() {
+		int totalItem = 0;
+		for (Iterator iterator = cartItemList.iterator(); iterator.hasNext();) {
+			CartItem cartItem = (CartItem) iterator.next();
+			totalItem += cartItem.getAmount();
+		}
+		return totalItem;
 	}
 
 	public List<CartItem> getProductInCartList() {

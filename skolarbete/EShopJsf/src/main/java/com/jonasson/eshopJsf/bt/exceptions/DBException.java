@@ -1,4 +1,4 @@
-package com.jonasson.eshop.bt.exceptions;
+package com.jonasson.eshopJsf.bt.exceptions;
 
 public class DBException extends Exception{
 
