@@ -4,7 +4,9 @@
   <button class="sideNavButton" mat-button color="accent" [routerLink]="['/Guestbook']"  routerLinkActive="active">Guestbook</button>
   <button class="sideNavButton" mat-button color="accent" (click)="toggleScoolwork()">Schoolwork</button>
   <ng-container *ngIf="showSchoolWork">
-    <button class="sideNavButton" mat-button color="accent" [routerLink]="['/JavaEEEshop']"  routerLinkActive="active">EShop i javaEE och jsf</button>
+    <div class="schoolworkdiv">
+      <button class="sideNavButton" mat-button color="accent" [routerLink]="['/JavaEEEshop']"  routerLinkActive="active">EShop i javaEE och jsf</button>
+  </div>
   </ng-container>
   <button class="sideNavButton" mat-button color="accent" [routerLink]="['/Javagames']"  routerLinkActive="active">Java games</button>
 </div>

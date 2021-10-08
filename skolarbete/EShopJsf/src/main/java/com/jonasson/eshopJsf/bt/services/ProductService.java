@@ -1,17 +1,24 @@
 package com.jonasson.eshopJsf.bt.services;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.enterprise.context.RequestScoped;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jonasson.eshopJsf.bt.exceptions.DBException;
+import com.jonasson.eshopJsf.dt.models.Order;
 import com.jonasson.eshopJsf.dt.models.Product;
 
-
+@RequestScoped
 public class ProductService implements IProductService {
 
 	public ProductService() {
@@ -22,7 +29,7 @@ public class ProductService implements IProductService {
         URL url;
         Product product = null;
 		try {
-			url = new URL("sjo0911wildfly.herokuapp.com/EShop/product/" +id);
+			url = new URL("http://sjo0911wildfly.herokuapp.com/EShop/product/" +id);
 	        // Open a connection(?) on the URL(?) and cast the response(??)
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -71,10 +78,73 @@ public class ProductService implements IProductService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-
 		return productList;
-        
+	}
+	
+	@Override
+	public int addOne(String id) throws DBException {
+		try {
+				URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/product/addone/" +id);
+				HttpURLConnection con = (HttpURLConnection)url.openConnection();
+				con.setRequestMethod("POST");
+				con.setRequestProperty("Content-Type", "application/json; utf-8");
+				con.setRequestProperty("Accept", "application/json");
+				con.setDoOutput(true);
+				con.connect();
+				int responseCode =  con.getResponseCode();
+				con.disconnect();
+				return responseCode;
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+				throw new DBException();
+			} catch (IOException e) {
+				e.printStackTrace();
+				throw new DBException();
+			}
+	}
+	
+	@Override
+	public int addMany(String id, int amount) throws DBException {
+		try {
+				URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/product/addmany/" +id +"/" + amount);
+				HttpURLConnection con = (HttpURLConnection)url.openConnection();
+				con.setRequestMethod("POST");
+				con.setRequestProperty("Content-Type", "application/json; utf-8");
+				con.setRequestProperty("Accept", "application/json");
+				con.setDoOutput(true);
+				con.connect();
+				int responseCode =  con.getResponseCode();
+				con.disconnect();
+				return responseCode;
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+				throw new DBException();
+			} catch (IOException e) {
+				e.printStackTrace();
+				throw new DBException();
+			}
+	}
+	
+	@Override
+	public int removeOne(String id) throws DBException {
+		try {
+				URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/product/removeone/" +id);
+				HttpURLConnection con = (HttpURLConnection)url.openConnection();
+				con.setRequestMethod("POST");
+				con.setRequestProperty("Content-Type", "application/json; utf-8");
+				con.setRequestProperty("Accept", "application/json");
+				con.setDoOutput(true);
+				con.connect();
+				int responseCode =  con.getResponseCode();
+				con.disconnect();
+				return responseCode;
+			} catch (MalformedURLException e) {
+				e.printStackTrace();
+				throw new DBException();
+			} catch (IOException e) {
+				e.printStackTrace();
+				throw new DBException();
+			}
 	}
 
 }

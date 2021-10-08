@@ -50,6 +50,53 @@ public class ProductController{
 		WriteResult result = productRepository.post(product);
 		return Response.ok(result).build();
 	}
+	
+	@POST
+	@Path("addone/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+    public Response addOneProduct(@PathParam("id") String id) {
+        ProductDTO productToAdd = productRepository.get(id);
+        productToAdd.setStock(productToAdd.getStock() +1);
+        WriteResult result = productRepository.update(productToAdd);
+        if(result.isUpdateOfExisting()) {
+        	return Response.ok(result).build();
+        } else {
+        	return Response.notModified().build();
+        }
+        	
+    }
+	
+	@POST
+	@Path("addmany/{id}/{amount}")
+	@Produces(MediaType.APPLICATION_JSON)
+    public Response addManyProducts(@PathParam("id") String id, @PathParam("amount") int amount) {
+        ProductDTO productToAdd = productRepository.get(id);
+        productToAdd.setStock(productToAdd.getStock() + amount);
+        WriteResult result = productRepository.update(productToAdd);
+        if(result.isUpdateOfExisting()) {
+        	return Response.ok(result).build();
+        } else {
+        	return Response.notModified().build();
+        }
+        	
+    }
+	
+	@POST
+	@Path("removeone/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+    public Response removeOneProduct(@PathParam("id") String id) {
+        ProductDTO productToAdd = productRepository.get(id);
+        if(productToAdd.getStock() < 1)
+        	return Response.notModified().build();
+        productToAdd.setStock(productToAdd.getStock() - 1);
+        WriteResult result = productRepository.update(productToAdd);
+        if(result.isUpdateOfExisting()) {
+        	return Response.ok(result).build();
+        } else {
+        	return Response.notModified().build();
+        }
+        	
+    }
     
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)

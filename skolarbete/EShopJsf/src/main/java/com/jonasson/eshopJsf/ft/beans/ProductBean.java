@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import com.jonasson.eshopJsf.bt.services.IProductService;
 import com.jonasson.eshopJsf.bt.services.ProductService;
+import com.jonasson.eshopJsf.dt.models.Order;
 import com.jonasson.eshopJsf.dt.models.Product;
 
 @Named("productBean")
@@ -22,6 +23,10 @@ public class ProductBean implements Serializable{
 	
 	public List<Product> getAll(){
 		return productService.getAll();
+	}
+	
+	public Product get(String id) {
+		return productService.get(id);
 	}
 
 }

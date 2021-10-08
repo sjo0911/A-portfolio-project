@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.jonasson.eshopJsf.bt.exceptions.DBException;
@@ -16,6 +17,7 @@ import com.jonasson.eshopJsf.dt.models.CartItem;
 import com.jonasson.eshopJsf.dt.models.Customer;
 import com.jonasson.eshopJsf.dt.models.Order;
 import com.jonasson.eshopJsf.dt.models.OrderItem;
+import com.jonasson.eshopJsf.dt.models.Product;
 
 @Named("orderBean")
 @RequestScoped
@@ -25,13 +27,18 @@ public class OrderBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Order order = new Order();
-	private IOrderService orderService = new OrderService();
+	private @Inject IOrderService orderService;
+	private @Inject CartBean cartBean; 
 	private String orderCompleted = null;
 	
 	@PostConstruct
 	private void init() {
 		order.setCustomer(new Customer());
 		order.getCustomer().setAdress(new Adress());
+	}
+	
+	public List<Order> getAll(){
+		return orderService.getAll();
 	}
 	
 	public void makeOrder(List<CartItem> cartItemList) {
@@ -46,6 +53,7 @@ public class OrderBean implements Serializable {
 		try {
 			orderService.post(order);
 			setOrderCompleted("Tack för din order");
+			cartBean.clearCartAfterOrderCompleted();
 		} catch (DBException exception) {
 			setOrderCompleted("Nånting gick fel. Försök igen senare");
 		}

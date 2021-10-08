@@ -47,15 +47,6 @@ public class OrderController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response post(OrderDTO orderDTO) {
-		System.out.println(orderDTO.getCustomer().getFirstName());
-		for(OrderItem prod : orderDTO.getOrderItemList()) {
-			ProductDTO productToUpdate = productRepository.get(prod.getProductId());
-			if(productToUpdate.getStock() < prod.getAmount())
-				return Response.status(400).build();
-			productToUpdate.setStock(productToUpdate.getStock() - prod.getAmount());
-			productRepository.update(productToUpdate);
-		}
-
 		String resp = orderRepository.post(orderDTO);
 		return Response.ok(resp).build();
 	}
