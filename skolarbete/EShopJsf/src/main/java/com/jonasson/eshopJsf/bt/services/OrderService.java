@@ -17,7 +17,7 @@ public class OrderService implements IOrderService {
 	@Override
 	public void post(Order order) throws DBException {
 		try {
-			URL url = new URL ("http://127.0.0.1:8080/EShop/order");
+			URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/order");
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("POST");
 			con.setRequestProperty("Content-Type", "application/json; utf-8");

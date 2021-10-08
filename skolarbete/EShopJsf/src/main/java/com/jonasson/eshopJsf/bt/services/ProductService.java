@@ -22,7 +22,7 @@ public class ProductService implements IProductService {
         URL url;
         Product product = null;
 		try {
-			url = new URL("http://127.0.0.1:8080/EShop/product/" +id);
+			url = new URL("sjo0911wildfly.herokuapp.com/EShop/product/" +id);
 	        // Open a connection(?) on the URL(?) and cast the response(??)
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -52,7 +52,7 @@ public class ProductService implements IProductService {
         URL url;
         List<Product> productList = null;
 		try {
-			url = new URL("http://127.0.0.1:8080/EShop/product");
+			url = new URL("http://sjo0911wildfly.herokuapp.com/EShop/product");
 	        // Open a connection(?) on the URL(?) and cast the response(??)
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
