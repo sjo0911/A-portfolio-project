@@ -1,10 +1,24 @@
 package com.jonasson.eshop.dt.enteties;
 
+import javax.persistence.Entity;
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Entity
 public class Customer {
+	@NotBlank(message = "Kunde inte hitta id nummer")
 	private String id;
+	@NotBlank(message = "Förnamn krävs")
 	private String firstName;
+	@NotBlank(message = "Efternam krävs")
 	private String lastName;
+	@NotBlank(message = "Email krävs")
+	@Email(message = "Email måste vara korrekt ifylld")
 	private String email;
+	@NotNull(message = "Adress krävs")
+	@Valid
 	private Adress adress;
 	
 	public String getId() {

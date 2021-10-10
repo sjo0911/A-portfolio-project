@@ -1,12 +1,11 @@
 package com.jonasson.eshop.dt.enteties;
 
-import java.io.Serializable;
+import org.bson.codecs.pojo.annotations.BsonId;
 
-public class Product implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class Product {
+	
 	private String name;
-	private String _id;
+	@BsonId private String id;
 	private String description;
 	private int stock;
 	private double price;
@@ -17,10 +16,10 @@ public class Product implements Serializable {
 		this.name = name;
 	}
 	public String getId() {
-		return _id;
+		return id;
 	}
 	public void setId(String id) {
-		this._id = id;
+		this.id = id;
 	}
 	public String getDescription() {
 		return description;
@@ -40,6 +39,7 @@ public class Product implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 
 
 }

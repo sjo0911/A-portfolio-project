@@ -1,4 +1,4 @@
-package com.jonasson.eshop.dt.DTOs;
+package com.jonasson.eshop.bt.DTOs;
 
 import java.io.Serializable;
 

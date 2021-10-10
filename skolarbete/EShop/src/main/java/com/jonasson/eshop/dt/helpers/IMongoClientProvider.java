@@ -1,4 +1,4 @@
-package com.jonasson.eshop.bt.helpers;
+package com.jonasson.eshop.dt.helpers;
 
 import com.mongodb.MongoClient;
 

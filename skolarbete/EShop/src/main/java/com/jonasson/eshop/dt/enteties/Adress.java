@@ -1,9 +1,15 @@
 package com.jonasson.eshop.dt.enteties;
 
+import javax.validation.constraints.NotBlank;
+
 public class Adress {
+	@NotBlank(message = "Gata krävs")
 	private String street;
+	@NotBlank(message = "Gatunummer krävs")
 	private String streetNumber;
+	@NotBlank(message = "Stad krävs")
 	private String city;
+	@NotBlank(message = "Land krävs")
 	private String country;
 	
 	public String getStreet() {

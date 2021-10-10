@@ -1,4 +1,4 @@
-package com.jonasson.eshop.dt.DTOs;
+package com.jonasson.eshop.bt.DTOs;
 
 import java.util.List;
 import org.bson.codecs.pojo.annotations.BsonId;
