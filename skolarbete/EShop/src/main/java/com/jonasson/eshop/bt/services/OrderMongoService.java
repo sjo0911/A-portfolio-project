@@ -51,10 +51,10 @@ public class OrderMongoService implements IOrderService {
 	}
 	
 	@Override
-	public String update(Order orderDTO) throws NotFoundException {
-		if( orderDTO == null || orderDTO.getId() == null )
-			throw new NotFoundException("Could not update.");
-		return orderDAO.update(orderDTO, orderDTO.getId());
+	public String update(OrderDTO orderDTO) throws NotFoundException, ValidationException {
+		Order order = toOrder(orderDTO);
+		validateOrder(order);
+		return orderDAO.update(order, order.getId());
 	}
 	
 	@Override

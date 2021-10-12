@@ -1,8 +1,8 @@
-package com.jonasson.eshopJsf.dt.models;
+package com.jonasson.eshopJsf.bt.DTOs;
 
 public class CartItem {
 	private int amount;
-	private Product product;
+	private ProductDTO product;
 	
 	
 	public int getAmount() {
@@ -11,10 +11,10 @@ public class CartItem {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	public Product getProduct() {
+	public ProductDTO getProduct() {
 		return product;
 	}
-	public void setProduct(Product product) {
+	public void setProduct(ProductDTO product) {
 		this.product = product;
 	}
 	

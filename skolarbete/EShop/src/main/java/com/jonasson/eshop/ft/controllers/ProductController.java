@@ -1,8 +1,9 @@
 package com.jonasson.eshop.ft.controllers;
 
+import com.jonasson.eshop.bt.DTOs.ProductDTO;
 import com.jonasson.eshop.bt.exceptions.NotFoundException;
+import com.jonasson.eshop.bt.exceptions.ValidationException;
 import com.jonasson.eshop.bt.services.IProductService;
-import com.jonasson.eshop.dt.enteties.Product;
 
 import java.util.List;
 
@@ -31,22 +32,27 @@ public class ProductController{
 	
 	@GET	
 	@Produces(MediaType.APPLICATION_JSON)
-    public List<Product> getAll() {
+    public List<ProductDTO> getAll() {
         return productRepository.getAll();
     }
 
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-    public Product getById(@PathParam("id") String id) {
+    public ProductDTO getById(@PathParam("id") String id) {
         return productRepository.get(id);
     }
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response post(Product product) {
-		String result = productRepository.post(product);
+	public Response post(ProductDTO product) {
+		String result = null;
+		try {
+			result = productRepository.post(product);
+		} catch (ValidationException e) {
+			return Response.status(400, e.getMessage()).build();
+		}
 		return Response.ok(result).build();
 	}
 	
@@ -54,18 +60,20 @@ public class ProductController{
 	@Path("addone/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
     public Response addOneProduct(@PathParam("id") String id) {
-        Product productToAdd = productRepository.get(id);
+        ProductDTO productToAdd = productRepository.get(id);
         productToAdd.setStock(productToAdd.getStock() +1);
-        String result;
+        String result = null;
 		try {
 			result = productRepository.update(productToAdd);
 		} catch (NotFoundException e) {
-			return Response.notModified().build();
+			return Response.status(400).build();
+		} catch (ValidationException e) {
+			return Response.status(400, e.getMessage()).build();
 		}
         if(result.equals("Updated!")) {
         	return Response.ok(result).build();
         } else {
-        	return Response.notModified().build();
+        	return Response.status(400).build();
         }
         	
     }
@@ -74,7 +82,7 @@ public class ProductController{
 	@Path("addmany/{id}/{amount}")
 	@Produces(MediaType.APPLICATION_JSON)
     public Response addManyProducts(@PathParam("id") String id, @PathParam("amount") int amount) {
-        Product productToAdd = productRepository.get(id);
+        ProductDTO productToAdd = productRepository.get(id);
         productToAdd.setStock(productToAdd.getStock() + amount);
 		return update(productToAdd);
     }
@@ -83,9 +91,9 @@ public class ProductController{
 	@Path("removeone/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
     public Response removeOneProduct(@PathParam("id") String id) {
-        Product productToAdd = productRepository.get(id);
+        ProductDTO productToAdd = productRepository.get(id);
         if(productToAdd.getStock() < 1)
-        	return Response.notModified().build();
+        	return Response.status(400).build();
         productToAdd.setStock(productToAdd.getStock() - 1);
 		return update(productToAdd); 	
     }
@@ -93,18 +101,19 @@ public class ProductController{
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response update(Product product) {
+	public Response update(ProductDTO product) {
 		String result = null;
 		try {
 			result = productRepository.update(product);
 		} catch (NotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return Response.status(400).build();
+		} catch (ValidationException e) {
+			return Response.status(400, e.getMessage()).build();
 		}
         if(result.equals("Updated!")) {
         	return Response.ok(result).build();
         } else {
-        	return Response.notModified().build();
+        	return Response.status(400).build();
         }
 	}
 	
@@ -116,7 +125,7 @@ public class ProductController{
 		try {
 			result = productRepository.delete(id);
 		} catch (NotFoundException e) {
-			return Response.notModified().build();
+			return Response.status(400).build();
 		}
 		return Response.ok(result).build();
     }

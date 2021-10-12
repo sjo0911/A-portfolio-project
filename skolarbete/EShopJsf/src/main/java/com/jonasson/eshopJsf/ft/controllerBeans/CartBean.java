@@ -1,4 +1,4 @@
-package com.jonasson.eshopJsf.ft.beans;
+package com.jonasson.eshopJsf.ft.controllerBeans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,11 +10,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.jonasson.eshopJsf.bt.DTOs.CartItem;
+import com.jonasson.eshopJsf.bt.DTOs.ProductDTO;
 import com.jonasson.eshopJsf.bt.exceptions.DBException;
-import com.jonasson.eshopJsf.bt.services.IOrderService;
 import com.jonasson.eshopJsf.bt.services.IProductService;
-import com.jonasson.eshopJsf.dt.models.CartItem;
-import com.jonasson.eshopJsf.dt.models.Product;
 
 @Named("cartBean")
 @SessionScoped
@@ -23,7 +22,6 @@ public class CartBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	private List<CartItem> cartItemList  = new ArrayList<CartItem>();
 	private @Inject IProductService productService;
 	
@@ -34,14 +32,13 @@ public class CartBean implements Serializable {
 				try {
 					productService.addMany(item.getProduct().getId(), item.getAmount());
 				} catch (DBException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			});
 		}
 	}
 	
-	public void addToCart(Product product) {
+	public void addToCart(ProductDTO product) {
 		if(product.getStock() > 0) {	
 			boolean isProductExistingInCart = cartItemList
 					.stream()
@@ -77,7 +74,7 @@ public class CartBean implements Serializable {
 		cartItemList = new ArrayList<CartItem>();
 	}
 	
-	public void removeFromCart(Product product) {
+	public void removeFromCart(ProductDTO product) {
 		for(CartItem cartItem : cartItemList) {
 			if(cartItem.getProduct().getId().equals(product.getId())) {
 				if(cartItem.getAmount() == 1) {

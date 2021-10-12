@@ -1,4 +1,4 @@
-package com.jonasson.eshopJsf.dt.models;
+package com.jonasson.eshopJsf.bt.DTOs;
 
 public class Customer {
 	private String id;

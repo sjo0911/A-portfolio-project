@@ -1,6 +1,6 @@
-package com.jonasson.eshopJsf.dt.models;
+package com.jonasson.eshopJsf.bt.DTOs;
 
-public class Product {
+public class ProductDTO {
 	private String name;
 	private String id;
 	private String description;

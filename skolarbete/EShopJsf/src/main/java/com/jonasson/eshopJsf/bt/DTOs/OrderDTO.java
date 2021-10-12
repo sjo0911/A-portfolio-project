@@ -1,8 +1,8 @@
-package com.jonasson.eshopJsf.dt.models;
+package com.jonasson.eshopJsf.bt.DTOs;
 
 import java.util.List;
 
-public class Order {
+public class OrderDTO {
 	private String id;
 	private Customer customer;
 	private List<OrderItem> orderItemList;

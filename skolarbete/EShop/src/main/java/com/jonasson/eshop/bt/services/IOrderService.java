@@ -5,7 +5,6 @@ import java.util.List;
 import com.jonasson.eshop.bt.DTOs.OrderDTO;
 import com.jonasson.eshop.bt.exceptions.NotFoundException;
 import com.jonasson.eshop.bt.exceptions.ValidationException;
-import com.jonasson.eshop.dt.enteties.Order;
 
 public interface IOrderService {
 
@@ -15,7 +14,7 @@ public interface IOrderService {
 
 	List<OrderDTO> getAll();
 
-	String update(Order orderDTO) throws NotFoundException;
+	String update(OrderDTO orderDTO) throws NotFoundException, ValidationException;
 
 	String delete(String id) throws NotFoundException;
 

@@ -1,4 +1,4 @@
-package com.jonasson.eshopJsf.ft.beans;
+package com.jonasson.eshopJsf.ft.controllerBeans;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,15 +9,13 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.jonasson.eshopJsf.bt.DTOs.Adress;
+import com.jonasson.eshopJsf.bt.DTOs.CartItem;
+import com.jonasson.eshopJsf.bt.DTOs.Customer;
+import com.jonasson.eshopJsf.bt.DTOs.OrderDTO;
+import com.jonasson.eshopJsf.bt.DTOs.OrderItem;
 import com.jonasson.eshopJsf.bt.exceptions.DBException;
 import com.jonasson.eshopJsf.bt.services.IOrderService;
-import com.jonasson.eshopJsf.bt.services.OrderService;
-import com.jonasson.eshopJsf.dt.models.Adress;
-import com.jonasson.eshopJsf.dt.models.CartItem;
-import com.jonasson.eshopJsf.dt.models.Customer;
-import com.jonasson.eshopJsf.dt.models.Order;
-import com.jonasson.eshopJsf.dt.models.OrderItem;
-import com.jonasson.eshopJsf.dt.models.Product;
 
 @Named("orderBean")
 @RequestScoped
@@ -26,7 +24,7 @@ public class OrderBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Order order = new Order();
+	private OrderDTO order = new OrderDTO();
 	private @Inject IOrderService orderService;
 	private @Inject CartBean cartBean; 
 	private String orderCompleted = null;
@@ -37,7 +35,7 @@ public class OrderBean implements Serializable {
 		order.getCustomer().setAdress(new Adress());
 	}
 	
-	public List<Order> getAll(){
+	public List<OrderDTO> getAll(){
 		return orderService.getAll();
 	}
 	
@@ -59,10 +57,10 @@ public class OrderBean implements Serializable {
 		}
 	}
 	
-	public Order getOrder() {
+	public OrderDTO getOrder() {
 		return order;
 	}
-	public void setOrder(Order order) {
+	public void setOrder(OrderDTO order) {
 		this.order = order;
 	}
 

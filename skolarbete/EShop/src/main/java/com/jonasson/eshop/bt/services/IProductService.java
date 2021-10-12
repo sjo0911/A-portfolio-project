@@ -2,19 +2,20 @@ package com.jonasson.eshop.bt.services;
 
 import java.util.List;
 
+import com.jonasson.eshop.bt.DTOs.ProductDTO;
 import com.jonasson.eshop.bt.exceptions.NotFoundException;
-import com.jonasson.eshop.dt.enteties.Product;
+import com.jonasson.eshop.bt.exceptions.ValidationException;
 
 public interface IProductService {
 
-	String post(Product product);
+	String post(ProductDTO productDTO) throws ValidationException;
 
-	Product get(String id);
+	ProductDTO get(String id);
 
 	String delete(String id) throws NotFoundException ;
 
-	List<Product> getAll();
+	List<ProductDTO> getAll();
 
-	String update(Product product) throws NotFoundException ;
+	String update(ProductDTO productDTO) throws NotFoundException, ValidationException ;
 
 }
