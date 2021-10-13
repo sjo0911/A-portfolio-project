@@ -1,10 +1,21 @@
 package com.jonasson.eshopJsf.bt.DTOs;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class Customer {
 	private String id;
+	@NotBlank(message = "Förnamn krävs")
 	private String firstName;
+	@NotBlank(message = "Efternam krävs")
 	private String lastName;
+	@NotBlank(message = "Email krävs")
+	@Email(message = "Email måste vara korrekt ifylld")
 	private String email;
+	@NotNull(message = "Adress krävs")
+	@Valid
 	private Adress adress;
 	
 	public String getId() {

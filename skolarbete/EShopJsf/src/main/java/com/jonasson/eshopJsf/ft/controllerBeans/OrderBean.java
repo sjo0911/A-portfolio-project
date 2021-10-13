@@ -15,8 +15,10 @@ import com.jonasson.eshopJsf.bt.DTOs.Customer;
 import com.jonasson.eshopJsf.bt.DTOs.OrderDTO;
 import com.jonasson.eshopJsf.bt.DTOs.OrderItem;
 import com.jonasson.eshopJsf.bt.exceptions.DBException;
+import com.jonasson.eshopJsf.bt.exceptions.ValidationException;
 import com.jonasson.eshopJsf.bt.services.IMQOrderService;
 import com.jonasson.eshopJsf.bt.services.IOrderService;
+import com.jonasson.ft.modelBeans.OrderModel;
 
 @Named("orderBean")
 @RequestScoped
@@ -25,7 +27,7 @@ public class OrderBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private OrderDTO order = new OrderDTO();
+	private OrderModel order = new OrderModel();
 	private @Inject IOrderService orderService;
 	private @Inject IMQOrderService mqOrderService;
 	private @Inject CartBean cartBean; 
@@ -37,7 +39,7 @@ public class OrderBean implements Serializable {
 		order.getCustomer().setAdress(new Adress());
 	}
 	
-	public List<OrderDTO> getAll(){
+	public List<OrderModel> getAll(){
 		return orderService.getAll();
 	}
 	
@@ -56,6 +58,8 @@ public class OrderBean implements Serializable {
 			cartBean.clearCartAfterOrderCompleted();
 		} catch (DBException exception) {
 			setOrderCompleted("Nånting gick fel. Försök igen senare");
+		} catch (ValidationException e) {
+			setOrderCompleted(e.getMessage());
 		}
 	}
 	
@@ -68,15 +72,19 @@ public class OrderBean implements Serializable {
 			orderItems.add(orderItem);
 		});
 		order.setOrderItemList(orderItems);
-		mqOrderService.post(order);
-		setOrderCompleted("Order skickad");
+		try {
+			mqOrderService.post(order);
+			setOrderCompleted("Order skickad");
+		} catch (ValidationException e) {
+			setOrderCompleted(e.getMessage());
+		}
 		cartBean.clearCartAfterOrderCompleted();
 	}
 	
-	public OrderDTO getOrder() {
+	public OrderModel getOrder() {
 		return order;
 	}
-	public void setOrder(OrderDTO order) {
+	public void setOrder(OrderModel order) {
 		this.order = order;
 	}
 
