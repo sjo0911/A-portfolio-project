@@ -120,7 +120,7 @@ public class ProductClient implements IProductClient {
 	@Override
 	public int removeOne(String id) throws DBException {
 		try {
-				URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/removeone/" +id);
+				URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/product/removeone/" +id);
 				HttpURLConnection con = (HttpURLConnection)url.openConnection();
 				con.setRequestMethod("POST");
 				con.setRequestProperty("Content-Type", "application/json; utf-8");
