@@ -41,7 +41,8 @@
 	    		Gatunummer: <h:inputText id="streetNumber" value="#{orderBean.getOrder().getCustomer().getAdress().streetNumber}"/><br/>
 	    		<h:outputText value="#{orderBean.orderCompleted}" 
 		    		rendered="#{orderBean.orderCompleted != null}"/>
-	    		<h:commandButton class="btn btn-success" value="Beställ" action="#{orderBean.makeOrder(cartBean.getProductInCartList())}"/>
+	    		<h:commandButton style="margin:5px" class="btn btn-success" value="Beställ med restApi" action="#{orderBean.makeOrder(cartBean.getProductInCartList())}"/>
+	    		<h:commandButton class="btn btn-success" value="Beställ med MQ" action="#{orderBean.makeOrderMq(cartBean.getProductInCartList())}"/>
 	    	</h:form>
 	    	<form>
 	     	 	<h:button class="btn btn-success" value="Home" outcome="index"/>

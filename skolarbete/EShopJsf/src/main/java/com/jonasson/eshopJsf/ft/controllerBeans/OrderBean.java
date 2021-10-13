@@ -15,6 +15,7 @@ import com.jonasson.eshopJsf.bt.DTOs.Customer;
 import com.jonasson.eshopJsf.bt.DTOs.OrderDTO;
 import com.jonasson.eshopJsf.bt.DTOs.OrderItem;
 import com.jonasson.eshopJsf.bt.exceptions.DBException;
+import com.jonasson.eshopJsf.bt.services.IMQOrderService;
 import com.jonasson.eshopJsf.bt.services.IOrderService;
 
 @Named("orderBean")
@@ -26,6 +27,7 @@ public class OrderBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private OrderDTO order = new OrderDTO();
 	private @Inject IOrderService orderService;
+	private @Inject IMQOrderService mqOrderService;
 	private @Inject CartBean cartBean; 
 	private String orderCompleted = null;
 	
@@ -55,6 +57,20 @@ public class OrderBean implements Serializable {
 		} catch (DBException exception) {
 			setOrderCompleted("Nånting gick fel. Försök igen senare");
 		}
+	}
+	
+	public void makeOrderMq(List<CartItem> cartItemList) {
+		List<OrderItem> orderItems = new ArrayList<>();
+		cartItemList.forEach(cartItem -> {
+			OrderItem orderItem = new OrderItem();
+			orderItem.setAmount(cartItem.getAmount());
+			orderItem.setProductId(cartItem.getProduct().getId());
+			orderItems.add(orderItem);
+		});
+		order.setOrderItemList(orderItems);
+		mqOrderService.post(order);
+		setOrderCompleted("Order skickad");
+		cartBean.clearCartAfterOrderCompleted();
 	}
 	
 	public OrderDTO getOrder() {

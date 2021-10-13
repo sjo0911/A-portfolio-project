@@ -23,7 +23,7 @@ public class OrderClient implements IOrderClient {
 	@Override
 	public void post(OrderDTO order) throws DBException {
 		try {
-			URL url = new URL ("http://127.0.0.1:8080/EShop/order");
+			URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/order");
 			HttpURLConnection con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("POST");
 			con.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -61,7 +61,7 @@ public class OrderClient implements IOrderClient {
         URL url;
         List<OrderDTO> orderList = null;
 		try {
-			url = new URL("http://127.0.0.1:8080/EShop/order");
+			url = new URL("http://sjo0911wildfly.herokuapp.com/EShop/order");
 	        // Open a connection(?) on the URL(?) and cast the response(??)
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 

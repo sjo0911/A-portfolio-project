@@ -6,11 +6,11 @@ import javax.validation.constraints.NotNull;
 import org.bson.codecs.pojo.annotations.BsonId;
 
 public class Product {
-	@NotBlank(message = "Gata krävs")
+	@NotBlank(message = "Namn krävs")
 	private String name;
-	@NotBlank(message = "Gata krävs")
+	@NotBlank(message = "Id krävs")
 	@BsonId private String id;
-	@NotBlank(message = "Gata krävs")
+	@NotBlank(message = "Beskrivning krävs")
 	private String description;
 	@NotNull
 	private int stock;

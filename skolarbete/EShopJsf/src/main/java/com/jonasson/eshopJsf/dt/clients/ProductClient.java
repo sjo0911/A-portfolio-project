@@ -21,7 +21,7 @@ public class ProductClient implements IProductClient {
         URL url;
         ProductDTO product = null;
 		try {
-			url = new URL("http://127.0.0.1:8080/EShop/product/" +id);
+			url = new URL("http://sjo0911wildfly.herokuapp.com/EShop/product/" +id);
 	        // Open a connection(?) on the URL(?) and cast the response(??)
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -51,7 +51,7 @@ public class ProductClient implements IProductClient {
         URL url;
         List<ProductDTO> productList = null;
 		try {
-			url = new URL("http://127.0.0.1:8080/EShop/product");
+			url = new URL("http://sjo0911wildfly.herokuapp.com/EShop/product");
 	        // Open a connection(?) on the URL(?) and cast the response(??)
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
@@ -76,7 +76,7 @@ public class ProductClient implements IProductClient {
 	@Override
 	public int addOne(String id) throws DBException {
 		try {
-				URL url = new URL ("http://127.0.0.1:8080/EShop/product/addone/" +id);
+				URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/product/addone/" +id);
 				HttpURLConnection con = (HttpURLConnection)url.openConnection();
 				con.setRequestMethod("POST");
 				con.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -98,7 +98,7 @@ public class ProductClient implements IProductClient {
 	@Override
 	public int addMany(String id, int amount) throws DBException {
 		try {
-				URL url = new URL ("http://127.0.0.1:8080/EShop/product/addmany/" +id +"/" + amount);
+				URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/product/addmany/" +id +"/" + amount);
 				HttpURLConnection con = (HttpURLConnection)url.openConnection();
 				con.setRequestMethod("POST");
 				con.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -120,7 +120,7 @@ public class ProductClient implements IProductClient {
 	@Override
 	public int removeOne(String id) throws DBException {
 		try {
-				URL url = new URL ("http://127.0.0.1:8080/EShop/product/removeone/" +id);
+				URL url = new URL ("http://sjo0911wildfly.herokuapp.com/EShop/product/removeone/" +id);
 				HttpURLConnection con = (HttpURLConnection)url.openConnection();
 				con.setRequestMethod("POST");
 				con.setRequestProperty("Content-Type", "application/json; utf-8");

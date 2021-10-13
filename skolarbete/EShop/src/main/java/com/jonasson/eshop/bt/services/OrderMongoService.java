@@ -93,7 +93,6 @@ public class OrderMongoService implements IOrderService {
 		Validator validator = factory.getValidator();
 		Set<ConstraintViolation<Order>> orderValidationSet = validator.validate(order);
 		if(orderValidationSet.size() > 0) {
-			System.out.println(orderValidationSet.toArray()[0].toString());
 			throw new ValidationException(orderValidationSet.toArray()[0].toString());
 		}
 	}

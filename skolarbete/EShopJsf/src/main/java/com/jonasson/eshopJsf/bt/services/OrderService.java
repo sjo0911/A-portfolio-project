@@ -2,8 +2,6 @@ package com.jonasson.eshopJsf.bt.services;
 
 
 import java.util.List;
-
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import com.jonasson.eshopJsf.bt.DTOs.OrderDTO;
 import com.jonasson.eshopJsf.bt.exceptions.DBException;
