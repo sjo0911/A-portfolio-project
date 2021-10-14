@@ -24,4 +24,10 @@ app.get('/javagames/connectfour/', function (req, res) {
 
 app.use('/javagames/connectfour/public', express.static('./dist/javagames/connectfour/public'));
 
+app.get('/javagames/snake/', function (req, res) {
+    res.sendFile('index.html', {root: 'dist/javagames/connectfour'});
+});
+
+app.use('/javagames/snake/public', express.static('./dist/javagames/snake/public'));
+
 app.listen(process.env.PORT || 8080);
