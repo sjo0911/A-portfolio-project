@@ -332,3 +332,7 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+#My additions
+/obj/**
+/.vscode/**
