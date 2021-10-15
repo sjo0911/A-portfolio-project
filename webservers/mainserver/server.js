@@ -25,9 +25,15 @@ app.get('/javagames/connectfour/', function (req, res) {
 app.use('/javagames/connectfour/public', express.static('./dist/javagames/connectfour/public'));
 
 app.get('/javagames/snake/', function (req, res) {
-    res.sendFile('index.html', {root: 'dist/javagames/connectfour'});
+    res.sendFile('index.html', {root: 'dist/javagames/snake'});
 });
 
 app.use('/javagames/snake/public', express.static('./dist/javagames/snake/public'));
+
+app.get('/javagames/spaceinvader/', function (req, res) {
+    res.sendFile('index.html', {root: 'dist/javagames/spaceinvader'});
+});
+
+app.use('/javagames/spaceinvader/public', express.static('./dist/javagames/spaceinvader/public'));
 
 app.listen(process.env.PORT || 8080);
