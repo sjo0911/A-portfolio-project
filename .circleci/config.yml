@@ -14,8 +14,11 @@ jobs:
                 name: install angular
                 command: cd frontend/angularMain && npm install @angular/cli
             - run:
-                name: install webserver dependencies
+                name: install angular dependencies
                 command: cd frontend/angularMain && npm install
+            - run:
+                name: install node dependencies
+                command: cd webservers/mainserver && npm install
             - run:
                 name: compile angular project
                 command: cd frontend/angularMain && npm run build && cd .. && cd ..

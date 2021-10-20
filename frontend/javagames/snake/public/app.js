@@ -1,3 +1,4 @@
+var amqp = require('amqplib/callback_api');
 document.addEventListener('DOMContentLoaded', () => {
     const squares = document.querySelectorAll(".grid div")
     const scoreDisplay = document.querySelector('span')
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             (currentSnake[0] - width < 0 && direction === -width) ||  //if snake hits top
             squares[currentSnake[0] + direction].classList.contains('snake') //if snake hits itself
         ) {
-            return clearInterval(interval)
+            return 
         }
 
         const tail = currentSnake.pop(); //removes last element of array
@@ -64,6 +65,35 @@ document.addEventListener('DOMContentLoaded', () => {
             appleIndex = Math.floor(Math.random() * squares.length)
         } while(squares[appleIndex].classList.contains("snake"))
         squares[appleIndex].classList.add("apple")
+    }
+
+    function gameOver() {
+        clearInterval(interval);
+        let user = localStorage.getItem("user");
+        scoreDisplay.textContent = "grattis " + user.firstName;
+        sendHighscore();
+    }
+
+    function sendHighscore(){
+        amqp.connect('amqps://iaqmcoek:EuPEe_Au1nAuEa8DD8tWstWP3VwFwV1m@rattlesnake.rmq.cloudamqp.com/iaqmcoek', function(error0, connection) {
+            if (error0) {
+              throw error0;
+            }
+            connection.createChannel(function(error1, channel) {
+              if (error1) {
+                throw error1;
+              }
+              var queue = 'highscore';
+              var msg = '"Hello" world';
+          
+              channel.assertQueue(queue, {
+                durable: false
+              });
+          
+              channel.sendToQueue(queue, Buffer.from(msg));
+              console.log(" [x] Sent %s", msg);
+            });
+          });
     }
         
 
